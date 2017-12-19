@@ -2,7 +2,7 @@
 % Script file for the initialization and run of the differential 
 % evolution optimizer.
 %********************************************************************
-function [FVr_x,S_y,I_nf] = Rundeopt(my_D);
+function [FVr_x,S_y,I_nf] = Rundeopt(my_D)
 %clear;
 %clc
 % F_VTR		"Value To Reach" (stop when ofunc < F_VTR)

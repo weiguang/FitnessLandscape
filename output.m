@@ -35,12 +35,12 @@ OUTPUT1(6) = GM.dev;
 OUTPUT1(7) = (Iter.iter - Iter.diter)/Iter.iter;
 OUTPUT1(8) = ((Time.allTime - Time.dur)/Time.allTime);
 
-
-
 grid on;
 subplot(2,2,1);
 plot(1:iter-1, DS.n);
 xlabel('Landscape time');
+% figure;
+% hold on;
 ylabel('Dynamic severity'); 
 
 subplot(2,2,2);
