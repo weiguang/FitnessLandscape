@@ -166,6 +166,16 @@ S_bestva(1) = S_bestval;      %best value
 %SDEV.a(1,:) = sum((bsxfun(@minus,FM_pop , SDEV.ab)).^2)/I_NP
 SDEV.a(1) = std(FM_pop(:));
 
+
+%------jam add 2018.1---------------
+%生成一列在[1,n]范围内的m个不重复的整数
+STA.n = randi(I_NP);
+tp=randperm(I_NP);
+td=tp(1:STA.n);
+%选择对应的种群个体
+ts= FM_pop(td,:);
+STA.a(1) = std(ts(:))/sqrt(STA.n);
+
 %----------- Jam 20170516
     F_CR = repmat(F_CR, I_NP, I_D);    
     F_epsilon = 0.1;
@@ -352,7 +362,18 @@ for k=1:I_NP
   %--------SDEV
     SDEV.a(I_iter) = std(FM_pop(:));
   
-  
+ %----My Function By Jam 2018.1.3---------------------------
+ %------jam add 2018.1---------------
+%生成一列在[1,n]范围内的m个不重复的整数
+STA.n = randi(I_NP);
+tp=randperm(I_NP);
+td=tp(1:STA.n);
+%选择对应的种群个体
+ts= FM_pop(td,:);
+%统计采样
+STA.a(I_iter) = std(ts(:))/sqrt(STA.n); 
+ 
+ 
   if ( abs (S_struct.bestval - S_bestval.FVr_oa) < accuracy & flag ==0)
 %    if (I_iter == 20)
   diter =    I_iter; 
@@ -398,7 +419,7 @@ end
 
     FDC.Cfb = sum([S_bestva(1:iter).FVr_oa])/iter;
 %     FDC.Cd =  sqrt(abs([S_val(:).FVr_oa] - S_bestval.FVr_oa) + sum((bsxfun(@minus,FM_ui,FVr_bestmemit))'.^2))
-    FDC.Cd = sqrt( sum((bsxfun(@minus,[S_bestmem(1:iter,:) [S_bestva(1:iter).FVr_oa]'],[S_struct.bestmemit  S_struct.bestval]))'.^2));
+    FDC.Cd = sqrt( sum( (bsxfun(@minus,[S_bestmem(1:iter,:) [S_bestva(1:iter).FVr_oa]'],[S_struct.bestmemit  S_struct.bestval]) )'.^2));
 %     FDC.Cd2 = norm( (bsxfun(@minus,[S_bestmem(1:iter,:) [S_bestva(1:iter).FVr_oa]'],[S_struct.bestmemit  S_struct.bestval])) );
 %     FDC.Cd  = sum( ((bsxfun(@minus,[S_val(:).FVr_oa],S_bestval.FVr_oa).^2)' );
     FDC.Cdb = sum(FDC.Cd)/iter;
@@ -560,6 +581,7 @@ OUTPUT.GM = GM;
 OUTPUT.FC = FC;
 OUTPUT.DS = DS;
 OUTPUT.SDEV = SDEV;
+OUTPUT.STA = STA;
 OUTPUT.Time = Time;
 OUTPUT.Iter = Iter;
 OUTPUT.S_bestva = S_bestva; % each iter best fitness
