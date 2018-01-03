@@ -5,6 +5,7 @@ GM = OUTPUT.GM;
 FC = OUTPUT.FC;
 DS = OUTPUT.DS;
 SDEV = OUTPUT.SDEV;
+STA = OUTPUT.STA;
 Time = OUTPUT.Time;
 Iter = OUTPUT.Iter;
 S_bestva = OUTPUT.S_bestva; % each iter best fitness
@@ -53,10 +54,15 @@ plot(1:iter, SDEV.a);
 xlabel('k');
 ylabel('standard deviation'); 
 
+% subplot(2,2,4);
+% plot(1:iter, [S_bestva(:).FVr_oa]);
+% xlabel('k');
+% ylabel('Optimum'); 
+
 subplot(2,2,4);
-plot(1:iter, [S_bestva(:).FVr_oa]);
+plot(1:iter, STA.a);
 xlabel('k');
-ylabel('Optimum'); 
+ylabel('statistic sampling'); 
 
 
 % subplot(2,3,2)
