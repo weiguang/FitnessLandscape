@@ -575,13 +575,13 @@ Iter.diter = diter;
 Iter.iter = iter;
 
 global OUTPUT;
-OUTPUT.FDC = FDC;
-OUTPUT.Rd = Rd;
-OUTPUT.GM = GM;
-OUTPUT.FC = FC;
-OUTPUT.DS = DS;
-OUTPUT.SDEV = SDEV;
-OUTPUT.STA = STA;
+OUTPUT.FDC = FDC;   %适应值距离相关性
+OUTPUT.Rd = Rd;     %粗糙度
+OUTPUT.GM = GM;     %梯度
+OUTPUT.FC = FC;     %适应值云
+OUTPUT.DS = DS;     %
+OUTPUT.SDEV = SDEV; %标准差
+OUTPUT.STA = STA;   %统计采样
 OUTPUT.Time = Time;
 OUTPUT.Iter = Iter;
 OUTPUT.S_bestva = S_bestva; % each iter best fitness
