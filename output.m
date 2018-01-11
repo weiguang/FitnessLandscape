@@ -37,33 +37,59 @@ OUTPUT1(7) = (Iter.iter - Iter.diter)/Iter.iter;
 OUTPUT1(8) = ((Time.allTime - Time.dur)/Time.allTime);
 
 grid on;
-subplot(2,2,1);
-plot(1:iter-1, DS.n);
-xlabel('Landscape time');
-% figure;
-% hold on;
-ylabel('Dynamic severity'); 
-
-subplot(2,2,2);
-plot(1:GM.T-1,[S_bestva(GM.select(1:GM.T-1)).FVr_oa]);
-xlabel('t');
-ylabel('Fitness gradients'); 
-
-subplot(2,2,3);
-plot(1:iter, SDEV.a);
-xlabel('k');
-ylabel('standard deviation'); 
-
-% subplot(2,2,4);
-% plot(1:iter, [S_bestva(:).FVr_oa]);
-% xlabel('k');
-% ylabel('Optimum'); 
-
-subplot(2,2,4);
 plot(1:iter, STA.a);
 xlabel('k');
 ylabel('statistic sampling'); 
 
+figure;
+plot(1:GM.T-1,[S_bestva(GM.select(1:GM.T-1)).FVr_oa]);
+xlabel('t');
+ylabel('Fitness gradients'); 
+
+% figure;
+% plot(1:iter-1, DS.n);
+% xlabel('Landscape time');
+% ylabel('Dynamic severity'); 
+
+% figure;
+% plot(1:iter, SDEV.a);
+% xlabel('k');
+% ylabel('standard deviation'); 
+% 
+figure;
+plot(1:iter, [S_bestva(:).FVr_oa],'o');
+xlabel('k');
+ylabel('Optimum'); 
+
+
+% grid on;
+% subplot(2,2,1);
+% plot(1:iter-1, DS.n);
+% xlabel('Landscape time');
+% % figure;
+% % hold on;
+% ylabel('Dynamic severity'); 
+% 
+% subplot(2,2,2);
+% plot(1:GM.T-1,[S_bestva(GM.select(1:GM.T-1)).FVr_oa]);
+% xlabel('t');
+% ylabel('Fitness gradients'); 
+% 
+% % subplot(2,2,3);
+% % plot(1:iter, SDEV.a);
+% % xlabel('k');
+% % ylabel('standard deviation'); 
+% 
+% 
+% subplot(2,2,3);
+% plot(1:iter, STA.a);
+% xlabel('k');
+% ylabel('statistic sampling'); 
+% 
+% subplot(2,2,4);
+% plot(1:iter, [S_bestva(:).FVr_oa]);
+% xlabel('k');
+% ylabel('Optimum'); 
 
 % subplot(2,3,2)
 % plot([S_bestva(1:iter).FVr_oa],FC.fm');
