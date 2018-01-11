@@ -1,11 +1,11 @@
 function output(OUTPUT)
-FDC = OUTPUT.FDC ;
-Rd = OUTPUT.Rd;
-GM = OUTPUT.GM;
-FC = OUTPUT.FC;
+FDC = OUTPUT.FDC;   %适应值距离相关性
+Rd = OUTPUT.Rd;     %粗糙度
+GM = OUTPUT.GM;     %梯度
+FC = OUTPUT.FC;     %适应值云
 DS = OUTPUT.DS;
-SDEV = OUTPUT.SDEV;
-STA = OUTPUT.STA;
+SDEV = OUTPUT.SDEV; %标准差
+STA = OUTPUT.STA;   %统计采样
 Time = OUTPUT.Time;
 Iter = OUTPUT.Iter;
 S_bestva = OUTPUT.S_bestva; % each iter best fitness
