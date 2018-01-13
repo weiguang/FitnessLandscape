@@ -1,7 +1,7 @@
 function output(OUTPUT)
 FDC = OUTPUT.FDC;   %适应值距离相关性,单值v
 Rd = OUTPUT.Rd;     %粗糙度，单值v
-GM = OUTPUT.GM;     %梯度，单值v
+GM = OUTPUT.GM;     %梯度v
 FC = OUTPUT.FC;     %适应值云
 DS = OUTPUT.DS;     %Dynamic Severity
 SDEV = OUTPUT.SDEV; %标准差
@@ -37,12 +37,12 @@ OUTPUT1(7) = (Iter.iter - Iter.diter)/Iter.iter;
 OUTPUT1(8) = ((Time.allTime - Time.dur)/Time.allTime);
 
 grid on;
-plot(1:iter, STA.a);
+plot(1:iter, STA.a,'g');
 xlabel('k');
 ylabel('statistic sampling'); 
 
 figure;
-plot(1:GM.T-1,[S_bestva(GM.select(1:GM.T-1)).FVr_oa]);
+plot(1:GM.T-1,[S_bestva(GM.select(1:GM.T-1)).FVr_oa],'*');
 xlabel('t');
 ylabel('Fitness gradients'); 
 
@@ -57,7 +57,7 @@ ylabel('Fitness gradients');
 % ylabel('standard deviation'); 
 % 
 figure;
-plot(1:iter, [S_bestva(:).FVr_oa],'o');
+plot(1:iter, [S_bestva(:).FVr_oa],'r');
 xlabel('k');
 ylabel('Optimum'); 
 
