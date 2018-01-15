@@ -16,6 +16,9 @@ if (S_struct.I_D == 2)
   %----Define the mesh of samples----------------------------------
   mesh(S_struct.FM_meshd);
   
+%    surfc(FVr_x,FM_y,FM_meshd);
+%    mesh(FVr_x,FM_y,FM_meshd);
+  
   %---Either plot the contour lines and population-----------------
   contour(S_struct.FVc_xx,S_struct.FVc_yy,S_struct.FM_meshd,20);
   title(S_struct.title);
