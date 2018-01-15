@@ -17,7 +17,7 @@
 %                   S_MSE.I_no   (O)    Number of objectives.
 %                   S_MSE.FVr_oa (O)    Objective function values.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function S_MSE= objfun(FVr_temp, S_struct)
+function S_MSE= Ackley(FVr_temp, S_struct)
 
 %---Spherical's function----------------------------------------
 %F_cost = 10*S_struct.I_D;

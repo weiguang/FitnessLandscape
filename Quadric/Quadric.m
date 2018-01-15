@@ -24,11 +24,14 @@ function S_MSE= Quadric(FVr_temp, S_struct)
 
 F_cost = 0;
 for i=1:S_struct.I_D
-    F_cost1 = 0;
-    for j=1:i
-        F_cost1 = F_cost1 + FVr_temp(j);
-    end
-   F_cost  = F_cost + F_cost1^2;
+%     F_cost1 = 0;
+%     for j=1:i
+%         F_cost1 = F_cost1 + FVr_temp(j);
+%     end
+%    F_cost  = F_cost + F_cost1^2;
+
+    F_cost = F_cost + sum(FVr_temp(:,1:i),2).^2;
+
    %F_cost + ((FVr_temp(i))^2-10*cos(2*pi*FVr_temp(i)));
 end
 
