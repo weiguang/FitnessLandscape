@@ -587,7 +587,7 @@ OUTPUT.Iter = Iter;
 OUTPUT.S_bestva = S_bestva; % each iter best fitness
 OUTPUT.S_bestmem = S_bestmem; % each iter best individual
 
-output(OUTPUT);
+output(OUTPUT, S_struct);
 
 
 s=1;

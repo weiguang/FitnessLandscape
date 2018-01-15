@@ -1,4 +1,4 @@
-function output(OUTPUT)
+function output(OUTPUT,S_struct)
 FDC = OUTPUT.FDC;   %适应值距离相关性,单值v
 Rd = OUTPUT.Rd;     %粗糙度，单值v
 GM = OUTPUT.GM;     %梯度v
@@ -35,6 +35,17 @@ OUTPUT1(6) = GM.dev;
 % str = [num2str(iter - diter), '/', num2str(iter)];
 OUTPUT1(7) = (Iter.iter - Iter.diter)/Iter.iter;
 OUTPUT1(8) = ((Time.allTime - Time.dur)/Time.allTime);
+
+
+if (S_struct.I_D == 2)
+  %----Define the mesh of samples----------------------------------
+   [FVr_x,FM_y]=meshgrid(S_struct.FVc_xx',S_struct.FVc_yy') ;
+   FM_meshd = S_struct.FM_meshd;
+   surfc(FVr_x,FM_y,FM_meshd);
+%    mesh(FVr_x,FM_y,FM_meshd);
+%   mesh(S_struct.FM_meshd);
+  figure;
+end
 
 grid on;
 plot(1:iter, STA.a,'g');
