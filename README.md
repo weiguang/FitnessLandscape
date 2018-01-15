@@ -5,14 +5,15 @@
 
 ## CEC benchmark function
 
-exist:
+> exist:
 
-rosenbrock
-griewank
-ackley
-rastrigin
-schwefel_102(Quadric)
+* Rosenbrock
+* Griewank
+* Ackley
+* Rastrigin
+* Quadric(Schwefel_102)
 
-add:
+> add:
 
-sphere
+* SphereCEC
+
