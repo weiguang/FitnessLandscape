@@ -1,3 +1,18 @@
 # FitnessLandscape
 
-浣跨敤鍑犱釜閫傚簲搴︽櫙瑙傜殑鎸囨爣鍒嗘瀽DE
+使用几个适应度景观的指标分析DE
+
+
+## CEC benchmark function
+
+exist:
+
+rosenbrock
+griewank
+ackley
+rastrigin
+schwefel_102(Quadric)
+
+add:
+
+sphere
