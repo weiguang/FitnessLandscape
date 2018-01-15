@@ -30,10 +30,10 @@ function RosenbrockParameter()
       
 %-----Problem dependent constant values for plotting----------------
 %-----provided D = 2------------------------------------------------
-if (I_plotting >= 1)   
+if (I_D == 2)   
     
-   FVc_xx = [-2.048:.004:2.048]';
-   FVc_yy = [-2.048:.004:2.048]';
+   FVc_xx = [-2.048:.04:2.048]';
+   FVc_yy = [-2.048:.04:2.048]';
 
    [FVr_x,FM_y]=meshgrid(FVc_xx',FVc_yy') ;
    FM_meshd = 100*(FM_y-FVr_x.^2).^2+(FVr_x-1).^2

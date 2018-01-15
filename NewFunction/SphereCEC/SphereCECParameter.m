@@ -30,14 +30,16 @@ function  SphereCECParameter()
 
 %-----Problem dependent constant values for plotting----------------
 %-----provided D = 2------------------------------------------------
-if (I_plotting >= 1)   
-
+if (I_D == 2)   
+    
+   load sphere_func_data;
+   
    FVc_xx = [-100:5:100]';
    FVc_yy = [-100:5:100]';
-
+   
    [FVr_x,FM_y]=meshgrid(FVc_xx',FVc_yy') ;
-   FM_meshd = FVr_x.^2 + FM_y.^2;
-    surfc(FVr_x,FM_y,FM_meshd);
+   FM_meshd = (FVr_x - o(1)).^2 + (FM_y-o(2)).^2 - 450;
+%    surfc(FVr_x,FM_y,FM_meshd);
 %    mesh(FVr_x,FM_y,FM_meshd);
       
    S_struct.FVc_xx       = FVc_xx;

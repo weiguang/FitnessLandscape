@@ -25,7 +25,7 @@ function S_MSE= SphereCEC(FVr_temp, S_struct)
 % for i=1:S_struct.I_D
 %    F_cost1= F_cost1* cos(FVr_temp(i)/sqrt(i))
 % end
-F_cost = = sum(FVr_temp.^2,2);
+F_cost = sum(FVr_temp.^2,2);
 
 
 %----strategy to put everything into a cost function------------

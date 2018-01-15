@@ -30,12 +30,12 @@ function  AckleyParameter()
 
 %-----Problem dependent constant values for plotting----------------
 %-----provided D = 2------------------------------------------------
-if (I_plotting >= 1)   
+if (I_D == 2)   
 
    FVc_xx = [-32:.2:32]';
    FVc_yy = [-32:.2:32]';
 
-   [FVr_x,FM_y]=meshgrid(FVc_xx',FVc_yy') ;
+   [FVr_x,FM_y]=meshgrid(FVc_xx',FVc_yy');
    FM_meshd = -20*exp(-0.2 * sqrt(0.5 *( FVr_x.^2 +  FM_y.^2)))-exp(0.5*(cos(2*pi.*FVr_x)+cos(2*pi.*FM_y)))+20 +exp(1);
       
    S_struct.FVc_xx       = FVc_xx;
