@@ -1,6 +1,6 @@
 clc;
 clear;
-addpath(genpath(pwd));
+AddWorkPath;
 % d=[5,15,30];
  d=[2,5,15,30];
 % d=[2];
