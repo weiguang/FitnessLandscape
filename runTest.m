@@ -53,6 +53,7 @@ function runTest(func, my_D)
     S_struct.I_plotting   = I_plotting;
     
     %% setting test function
+    S_struct.TestFunctionType  = 'normal';
     funcParameter = [func 'Parameter'];
     feval(funcParameter);
 
