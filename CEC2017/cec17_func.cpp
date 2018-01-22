@@ -434,7 +434,7 @@ void sum_diff_pow_func (double *x, double *f, int nx, double *Os,double *Mr, int
 	for (i=0; i<nx; i++)
 	{
 		double xi = z[i];
-		double newv = pow((abs(xi)),(i+1));
+		double newv = pow((fabs(xi)),(i+1));
 		sum = sum + newv;
 	}
 	
