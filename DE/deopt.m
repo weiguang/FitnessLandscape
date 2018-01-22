@@ -142,12 +142,13 @@ DS.nk = zeros(I_itermax,I_D);
 %------Evaluate the best member after initialization----------------------
 
 I_best_index   = 1;                   % start with first population member
-S_val(1)       = feval(fname,FM_pop(I_best_index,:),S_struct);
+
+S_val(1)       = getFitnessValue(fname,FM_pop(I_best_index,:),S_struct); %feval(fname,FM_pop(I_best_index,:),var);
 
 S_bestval = S_val(1);                 % best objective function value so far
 I_nfeval  = I_nfeval + 1;
 for k=2:I_NP                          % check the remaining members
-  S_val(k)  = feval(fname,FM_pop(k,:),S_struct);
+  S_val(k)  = getFitnessValue(fname,FM_pop(k,:),S_struct); % feval(fname,FM_pop(k,:),var); 
   I_nfeval  = I_nfeval + 1;
   if (left_win(S_val(k),S_bestval) == 1)
      I_best_index   = k;              % save its location
@@ -177,10 +178,10 @@ ts= FM_pop(td,:);
 STA.a(1) = std(ts(:))/sqrt(STA.n);
 
 %----------- Jam 20170516
-    F_CR = repmat(F_CR, I_NP, I_D);    
-    F_epsilon = 0.1;
-    F_weight_e = F_weight;
-    F_weight = repmat(F_weight, I_NP, I_D);
+%     F_CR = repmat(F_CR, I_NP, I_D);    
+%     F_epsilon = 0.1;
+%     F_weight_e = F_weight;
+%     F_weight = repmat(F_weight, I_NP, I_D);
     
 
 %-----------------------------------
@@ -311,7 +312,7 @@ for k=1:I_NP
       end
       %=====End boundary constraints==========================================
   
-      S_tempval = feval(fname,FM_ui(k,:),S_struct);   % check cost of competitor
+      S_tempval = getFitnessValue(fname, FM_ui(k,:),S_struct); % feval(fname,FM_ui(k,:),var);   % check cost of competitor
       I_nfeval  = I_nfeval + 1;
       if (left_win(S_tempval,S_val(k)) == 1)   
          FM_pop(k,:) = FM_ui(k,:);                    % replace old vector with new one (for new iteration)
@@ -383,23 +384,23 @@ STA.a(I_iter) = std(ts(:))/sqrt(STA.n);
  
  
  %%%----jam  20170516   update F and CR  
-   favg_iter = sum([S_val(:).FVr_oa])/I_NP;
-   %change CR
-    F_CR1 = F_CR(:,1);
-    F_CR_mui =  favg_iter > [S_val(:).FVr_oa]';
-    F_CR_mpo = F_CR_mui < 0.5;    % inverse mask 
-    F_CR1 = F_CR1 .* F_CR_mui  +   F_CR_mpo .* normrnd(0.5, 0.5, I_NP, 1);
-    F_CR = repmat(F_CR1, 1, I_D);
-  %change F
-    var_1 = (1 - favg_iter + [S_val(:).FVr_oa])';
-    var_2 = 1 - favg_iter + S_bestval.FVr_oa;
-    var_r1 = rand(I_NP, 1);
-    var_r2 = rand(I_NP, 1);
-    F_weight_new =  F_weight_e + var_r1 .* ( var_1 / var_2);
-    F_weight_mui = or((favg_iter > [ S_val(:).FVr_oa]' ), (var_r2 < F_epsilon));
-    F_weight_mpo = F_weight_mui < 0.5;
-    F_weight = F_weight_new .* F_weight_mui + F_weight(:,1) .* F_weight_mpo;
-    F_weight = repmat(F_weight, 1, I_D);
+%    favg_iter = sum([S_val(:).FVr_oa])/I_NP;
+%    %change CR
+%     F_CR1 = F_CR(:,1);
+%     F_CR_mui =  favg_iter > [S_val(:).FVr_oa]';
+%     F_CR_mpo = F_CR_mui < 0.5;    % inverse mask 
+%     F_CR1 = F_CR1 .* F_CR_mui  +   F_CR_mpo .* normrnd(0.5, 0.5, I_NP, 1);
+%     F_CR = repmat(F_CR1, 1, I_D);
+%   %change F
+%     var_1 = (1 - favg_iter + [S_val(:).FVr_oa])';
+%     var_2 = 1 - favg_iter + S_bestval.FVr_oa;
+%     var_r1 = rand(I_NP, 1);
+%     var_r2 = rand(I_NP, 1);
+%     F_weight_new =  F_weight_e + var_r1 .* ( var_1 / var_2);
+%     F_weight_mui = or((favg_iter > [ S_val(:).FVr_oa]' ), (var_r2 < F_epsilon));
+%     F_weight_mpo = F_weight_mui < 0.5;
+%     F_weight = F_weight_new .* F_weight_mui + F_weight(:,1) .* F_weight_mpo;
+%     F_weight = repmat(F_weight, 1, I_D);
 
 
     
@@ -591,4 +592,18 @@ output(OUTPUT, S_struct);
 
 
 s=1;
+end
 
+function S_MSE = getFitnessValue(fname,x, S_struct)
+if(strcmp(S_struct.TestFunctionType, 'CEC2017'))
+   F_cost = feval(fname,x',S_struct.func_num);
+   %----strategy to put everything into a cost function------------
+    S_MSE.I_nc      = 0;%no constraints
+    S_MSE.FVr_ca    = 0;%no constraint array
+    S_MSE.I_no      = 1;%number of objectives (costs)
+    S_MSE.FVr_oa(1) = F_cost;
+else 
+   S_MSE = feval(fname,x,S_struct);
+end
+
+end

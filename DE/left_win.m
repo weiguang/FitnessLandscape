@@ -15,6 +15,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function I_z = left_win(S_x,S_y);
+% I_z = 1;
+% if ~is_struct(S_x)
+%   if  S_x > S_y
+%     I_z = 0;
+%   end
+% end
+    
 I_z = 1;  %start with I_z=1
 
 %----deal with the constraints first. If constraints are not met------
