@@ -341,7 +341,8 @@ for k=1:I_NP
        %var(FM_pop)
        format long e;
        for n=1:I_D
-          fprintf(1,'best(%d) = %g\n',n,FVr_bestmem(n));
+          fprintf(1,'best(%d) = %g ',n,FVr_bestmem(n));
+          fprintf('\n');
        end
        if (I_plotting >= 1)
           PlotIt(FVr_bestmem,I_iter,S_struct); 
@@ -378,7 +379,7 @@ STA.a(I_iter) = std(ts(:))/sqrt(STA.n);
   if ( abs (S_struct.bestval - S_bestval.FVr_oa) < accuracy & flag ==0)
 %    if (I_iter == 20)
   diter =    I_iter; 
-  dur = toc
+  dur = toc;
   flag =1;
   end
  
@@ -414,7 +415,7 @@ iter = I_iter;
 % if can't find threshold, all time;
 if(flag ==0)
   diter =    I_iter; 
-  dur = toc 
+  dur = toc ;
 end
 %----A
 
@@ -569,8 +570,8 @@ end
   
 allTime = toc;
 
-Time.dur = dur
-Time.allTime = allTime
+Time.dur = dur;
+Time.allTime = allTime;
 
 Iter.diter = diter;
 Iter.iter = iter;
