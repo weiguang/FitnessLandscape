@@ -2,10 +2,10 @@ clc;
 clear;
 addpath(genpath(pwd));
 % d=[5,15,30];
-d=[2,5,15,30];
-% d=[2];
-[m n] = size(d);
-func_num = 1;
+%d=[2,5,15,30];
+d=[2,10,30,50,100]; % cec2017
+[m n] = size(d); 
+func_num = 30;
 for i = 1:n
     con  = 1;
     while(con >0)
