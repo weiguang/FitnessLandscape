@@ -10,8 +10,9 @@ I_D =  S_struct.I_D;
 fileName = sprintf('shift_data_%d.txt',func_num);
 o = load(fileName);
 
-F_VTR = 0;   % F_VTR		"Value To Reach" (stop when ofunc < F_VTR)
-S_struct.bestval = 0;
+
+S_struct.bestval = func_num * 100;
+F_VTR = S_struct.bestval + 0.000000001;   % F_VTR		"Value To Reach" (stop when ofunc < F_VTR)
 %I_bestmemit = 0;
 S_struct.bestmemit = o(1:I_D) %repmat(I_bestmemit,1,I_D);
 
@@ -27,10 +28,11 @@ S_struct.title = sprintf('%s %d','function',func_num);
 
 switch func_num
     case 1
-        F_VTR = 0;   % F_VTR		"Value To Reach" (stop when ofunc < F_VTR)
-        S_struct.bestval = 0;
-        %I_bestmemit = 0;
-        S_struct.bestmemit = o(1:I_D) %repmat(I_bestmemit,1,I_D);
+%         F_VTR = 0;   % F_VTR		"Value To Reach" (stop when ofunc < F_VTR)
+%         S_struct.bestval = 0;
+%         %I_bestmemit = 0;
+%         S_struct.bestmemit = o(1:I_D) %repmat(I_bestmemit,1,I_D);
+        disp(['test function ' func_num]);
     otherwise
         disp('other value');
 end
