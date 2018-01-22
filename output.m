@@ -15,6 +15,7 @@ I_D = size(S_bestmem(1,:),2);
 iter = Iter.iter;
 
 %Êä³ö
+Time
 fprintf(1,'D = %d \n',I_D);
 fprintf(1,'Cfd = %.3f\n',FDC.Cfd);
 %fprintf(1,'Cfd = %.3f , Cfb = %.3f, FDC.r = = %.3f\n',FDC.Cfd,FDC.Cfb,FDC.r);
