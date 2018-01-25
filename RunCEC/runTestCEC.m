@@ -1,10 +1,10 @@
-function runTestCEC(func_num,my_D)
+function [FVr_x,S_y,I_nf] = runTestCEC(func_num,my_D)
 
 % I_NP            number of population members
-I_NP = 100;  %pretty high number - needed for demo purposes only
+I_NP = 150;  %pretty high number - needed for demo purposes only
 
 % I_itermax       maximum number of iterations (generations)
-I_itermax = 500;
+I_itermax = 600;
 
 % F_weight        DE-stepsize F_weight ex [0, 2]
 F_weight = 0.5;
@@ -35,7 +35,7 @@ I_strategy = 1;
 % I_refresh     intermediate output will be produced after "I_refresh"
 %               iterations. No intermediate output will be produced
 %               if I_refresh is < 1
-I_refresh = 5;
+I_refresh = 100;
 
 % I_plotting    Will use plotting if set to 1. Will skip plotting otherwise.
 I_plotting = 0;
