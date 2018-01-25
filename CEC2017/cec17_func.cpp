@@ -153,6 +153,7 @@ void cec17_test_func(double *x, double *f, int nx, int mx,int func_num)
 
 		/* Load Matrix M*/
 		sprintf(FileName, "input_data/M_%d_D%d.txt", func_num,nx);
+        printf("Matrix M fileName = %s\n", FileName);
 		fpt = fopen(FileName,"r");
 		if (fpt==NULL)
 		{
