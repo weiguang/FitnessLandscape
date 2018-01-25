@@ -15,7 +15,7 @@ for func_num = 25:30
             if (CheckFile(func_num,d(i))==0)
                 [FVr_x,S_y,I_nf] = runTestCEC(func_num,d(i));
             end
-            con = input('请输入重跑,回车继续下一维:');
+            con = input('请输入‘回车’继续下一维，‘其他键’重跑，‘ctrl+c’ 结束:');
         end
     end
 end
