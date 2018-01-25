@@ -4,7 +4,7 @@ function runTestCEC(func_num,my_D)
 I_NP = 100;  %pretty high number - needed for demo purposes only
 
 % I_itermax       maximum number of iterations (generations)
-I_itermax = 1000;
+I_itermax = 500;
 
 % F_weight        DE-stepsize F_weight ex [0, 2]
 F_weight = 0.5;
@@ -57,7 +57,7 @@ S_struct.I_plotting   = I_plotting;
 S_struct.TestFunctionType  = 'CEC2017';
 S_struct.func_num = func_num;
 func = 'cec17_func';
-fhd=str2func(func);
+% fhd=str2func(func);
 
 %% setting test function
 funcParameter = [S_struct.TestFunctionType 'Parameter'];

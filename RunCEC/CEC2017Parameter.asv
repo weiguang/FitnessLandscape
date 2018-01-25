@@ -7,10 +7,13 @@ function CEC2017Parameter(func_num)
 global S_struct;
 I_D =  S_struct.I_D;
 
-% CheckFile(func_num,I_D);
+CheckFile(func_num,I_D);
 
 fileName = sprintf('shift_data_%d.txt',func_num);
 o = load(fileName);
+
+
+
 
 S_struct.bestval = func_num * 100;
 F_VTR = S_struct.bestval + 0.000000001;   % F_VTR		"Value To Reach" (stop when ofunc < F_VTR)
@@ -45,3 +48,18 @@ S_struct.F_VTR        = F_VTR;
 
 end
 
+%% 检查文件
+% func_num:测试函数编号
+% D: 维度
+function CheckFile(func_num,D)
+
+dataFile = sprintf('shift_data_%d.txt',func_num);
+if ~exist(dataFile,'file')==0
+    error();
+end
+dataFile = sprintf('input_data/shuffle_data_%d_D%d.txt',func_num,D);
+if ~exist(dataFile,'file')==0
+    error(disp(['no data file:' dataFile]));
+end
+
+end
