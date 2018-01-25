@@ -336,13 +336,13 @@ for k=1:I_NP
 %----Output section----------------------------------------------------------
 
   if (I_refresh > 0)
-     if ((rem(I_iter,I_refresh) == 0) | I_iter == 1)
+     if ((rem(I_iter,I_refresh) == 0) || I_iter == 1)
        fprintf(1,'Iteration: %d,  Best: %f,  F_weight: %f,  F_CR: %f,  I_NP: %d\n',I_iter,S_bestval.FVr_oa(1),F_weight,F_CR,I_NP);
        %var(FM_pop)
        format long e;
        for n=1:I_D
           fprintf(1,'best(%d) = %g ',n,FVr_bestmem(n));
-          fprintf('\n');
+          fprintf(1,'\n');
        end
        if (I_plotting >= 1)
           PlotIt(FVr_bestmem,I_iter,S_struct); 
@@ -597,7 +597,8 @@ end
 
 function S_MSE = getFitnessValue(fname,x, S_struct)
 if(strcmp(S_struct.TestFunctionType, 'CEC2017'))
-   F_cost = feval(fname,x',S_struct.func_num);
+    fhd=str2func(fname);
+   F_cost = feval(fhd,x',S_struct.func_num);
    %----strategy to put everything into a cost function------------
     S_MSE.I_nc      = 0;%no constraints
     S_MSE.FVr_ca    = 0;%no constraint array
