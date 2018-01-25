@@ -16,7 +16,7 @@ iter = Iter.iter;
 
 %Êä³ö
 Time
-fprintf(1,'D = %d \n',I_D);
+fprintf(1,"function number = %d, D = %d \n", S_struct.func_num , I_D);
 fprintf(1,'Cfd = %.3f\n',FDC.Cfd);
 %fprintf(1,'Cfd = %.3f , Cfb = %.3f, FDC.r = = %.3f\n',FDC.Cfd,FDC.Cfb,FDC.r);
 fprintf(1,'Rd.r1 = %.3f , Rd.r5 = %.3f \n', Rd.r1,Rd.r5); 
@@ -54,7 +54,7 @@ xlabel('k');
 ylabel('statistic sampling'); 
 
 figure;
-plot(1:GM.T-1,[S_bestva(GM.select(1:GM.T-1)).FVr_oa],'*');
+plot(1:GM.T-1,[S_bestva(GM.select(1:GM.T-1)).FVr_oa]);
 xlabel('t');
 ylabel('Fitness gradients'); 
 
