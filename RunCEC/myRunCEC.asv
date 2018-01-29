@@ -27,7 +27,7 @@ function re = CheckFile(func_num,D)
 re = 0;
 if func_num == 2
     re = 3;
-    disp("This function (F2) has been deleted");
+    
 elseif func_num < 11 && D == 2  %前10个测试函数可以是2维
     re = 0;
 else
