@@ -9,6 +9,7 @@ addpath(genpath([pwd '\RunCEC']));
 
  cd CEC2017
  mex cec17_func.cpp
+ cd ..
 
 
 end
