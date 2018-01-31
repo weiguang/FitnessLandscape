@@ -1,3 +1,7 @@
+#Matlab
+*.mexw64
+*.asv
+
 # Prerequisites
 *.d
 
