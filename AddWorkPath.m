@@ -12,4 +12,4 @@ addpath(genpath([pwd '\RunCEC']));
  cd ..
 
 
-end
+endOn branch master
