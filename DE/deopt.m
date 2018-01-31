@@ -357,6 +357,7 @@ for k=1:I_NP
   
   I_iter = I_iter + 1;
  
+ts= FM_pop(td,:);
   
   %----My Function By Jam 2016.5.30---------------------------------------------------- 
  S_bestmem(I_iter,:) = FVr_bestmemit; % best parameter vector
@@ -371,7 +372,6 @@ STA.n = randi(I_NP);
 tp=randperm(I_NP);
 td=tp(1:STA.n);
 %选择对应的种群个体
-ts= FM_pop(td,:);
 %统计采样
 STA.a(I_iter) = std(ts(:))/sqrt(STA.n); 
  

@@ -48,31 +48,49 @@ if (S_struct.I_D == 2 && ~strcmp(S_struct.TestFunctionType, 'CEC2017'))
   figure;
 end
 
-grid on;
-plot(1:iter, STA.a,'g');
-xlabel('k');
-ylabel('statistic sampling'); 
-
-figure;
-plot(1:GM.T-1,[S_bestva(GM.select(1:GM.T-1)).FVr_oa]);
-xlabel('t');
-ylabel('Fitness gradients'); 
-
-% figure;
-% plot(1:iter-1, DS.n);
-% xlabel('Landscape time');
-% ylabel('Dynamic severity'); 
-
-% figure;
-% plot(1:iter, SDEV.a);
+% grid on;
+% plot(1:iter, STA.a,'g');
 % xlabel('k');
-% ylabel('standard deviation'); 
+% ylabel('statistic sampling'); 
 % 
-figure;
-plot(1:iter, [S_bestva(:).FVr_oa],'r');
-xlabel('k');
-ylabel('Optimum'); 
+% figure;
+% plot(1:GM.T-1,[S_bestva(GM.select(1:GM.T-1)).FVr_oa]);
+% xlabel('t');
+% ylabel('Fitness gradients'); 
+% 
+% % figure;
+% % plot(1:iter-1, DS.n);
+% % xlabel('Landscape time');
+% % ylabel('Dynamic severity'); 
+% 
+% % figure;
+% % plot(1:iter, SDEV.a);
+% % xlabel('k');
+% % ylabel('standard deviation'); 
 
+
+% figure;
+plot(1:iter, [S_bestva(:).FVr_oa],'r');
+xlabel('迭代k');
+ylabel('最优解Optimum');
+hold on;
+plot(S_struct.bestval,'o');
+hold off;
+
+figure;
+hist(pdist2(S_bestmem ,S_struct.bestmemit),20);
+xlabel('每一代最优个体到全局最优个体的距离');
+ylabel('数量'); 
+
+
+figure;
+hist((STA.a),20);
+xlabel('统计采样的值');
+ylabel('数量'); 
+
+
+
+%% old function  output
 
 % grid on;
 % subplot(2,2,1);

@@ -4,7 +4,7 @@ function runTest(func, my_D)
 		I_NP = 150;  %pretty high number - needed for demo purposes only
 
 % I_itermax       maximum number of iterations (generations)
-		I_itermax = 300; 
+		I_itermax = 600; 
        
 % F_weight        DE-stepsize F_weight ex [0, 2]
 		F_weight = 0.5; 
@@ -54,6 +54,7 @@ function runTest(func, my_D)
     
     %% setting test function
     S_struct.TestFunctionType  = 'normal';
+    S_struct.func_num = 0;
     funcParameter = [func 'Parameter'];
     feval(funcParameter);
 
