@@ -1,6 +1,6 @@
 # FitnessLandscape
 
-ä½¿ç”¨å‡ ä¸ªé€‚åº”åº¦æ™¯è§‚çš„æŒ‡æ ‡åˆ†æDE
+Ê¹ÓÃ¼¸¸öÊÊÓ¦¶È¾°¹ÛµÄÖ¸±ê·ÖÎöDE
 
 
 ## CEC benchmark function
@@ -18,4 +18,13 @@
 * SphereCEC
 
 ## CEC2017
-æ–°è¿›å…¥äº†CEC2017 çš„æµ‹è¯•å‡½æ•°
+NEW: Add CEC2017 beanchmark
+
+## How to run
+1. Old function 
+* add directory "OldFunctions" to search path, you can run  `AddWorkPath.m` . You should uncomment `addpath(genpath([pwd '\OldFunctions']))`;
+* run `myRun.m`
+
+2. CEC 2017
+* run `AddWorkPath.m` to add directory to search path.
+* run `RunCEC\myRunCEC.m`
