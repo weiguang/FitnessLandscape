@@ -30,7 +30,10 @@ if func_num == 2
     re = 3;
     disp("This function (F2) has been deleted");
 elseif  func_num < 11 && D == 2 %前10个测试函数可以是2维
-    re  = 0
+    re  = 0;
+elseif (D==2&&((func_num>=17&&func_num<=22)||(func_num>=29&&func_num<=30)))
+    disp("\nError: hf01,hf02,hf03,hf04,hf05,hf06,cf07&cf08 are NOT defined for D=2.\n");
+    re = -1;
 elseif func_num > 10 &&  func_num <21 && D == 2  %11-20个测试函数不可以是2维
     disp("Test functions 11-20  are only defined for D=10,30,50,100.");
     re = -1;
