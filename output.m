@@ -1,4 +1,5 @@
 function output(OUTPUT,S_struct)
+
 FDC = OUTPUT.FDC;   %适应值距离相关性,单值v
 Rd = OUTPUT.Rd;     %粗糙度，单值v
 GM = OUTPUT.GM;     %梯度v
@@ -38,6 +39,7 @@ OUTPUT1(7) = (Iter.iter - Iter.diter)/Iter.iter;
 OUTPUT1(8) = ((Time.allTime - Time.dur)/Time.allTime);
 
 
+
 if (S_struct.I_D == 2 && ~strcmp(S_struct.TestFunctionType, 'CEC2017'))
   %----Define the mesh of samples----------------------------------
    [FVr_x,FM_y]=meshgrid(S_struct.FVc_xx',S_struct.FVc_yy') ;
@@ -47,6 +49,8 @@ if (S_struct.I_D == 2 && ~strcmp(S_struct.TestFunctionType, 'CEC2017'))
 %   mesh(S_struct.FM_meshd);
   figure;
 end
+
+
 % plot(1:iter, STA.a,'g');
 % xlabel('k');
 % ylabel('statistic sampling'); 
@@ -64,31 +68,33 @@ end
 % % ylabel('Dynamic severity'); 
 % 
 
-%figure;
-plot(1:iter, SDEV.a);
-xlabel('迭代次数');
-ylabel('标准差'); 
+%% new output
+% %figure;
+% plot(1:iter, SDEV.a);
+% xlabel('迭代次数');
+% ylabel('标准差'); 
+% 
+% 
+%  figure;
+% plot(1:iter, [S_bestva(:).FVr_oa],'o');
+% xlabel('迭代次数');
+% ylabel('种群最优解');
+% hold on;
+% plot(S_struct.bestval,'*');
+% hold off;
+% 
+% figure;
+% hist(pdist2(S_bestmem ,S_struct.bestmemit),20);
+% xlabel('最优个体到全局最优个体的欧式距离');
+% ylabel('数量'); 
+% 
+% 
+% figure;
+% hist((STA.a),20);
+% xlabel('样本平均值的标准偏差');
+% ylabel('数量'); 
 
-
- figure;
-plot(1:iter, [S_bestva(:).FVr_oa],'o');
-xlabel('迭代次数');
-ylabel('种群最优解');
-hold on;
-plot(S_struct.bestval,'*');
-hold off;
-
-figure;
-hist(pdist2(S_bestmem ,S_struct.bestmemit),20);
-xlabel('最优个体到全局最优个体的欧式距离');
-ylabel('数量'); 
-
-
-figure;
-hist((STA.a),20);
-xlabel('样本平均值的标准偏差');
-ylabel('数量'); 
-
+%% test
 
 
 %% old function  output

@@ -1,10 +1,10 @@
-function runTest(func, my_D)
+function OUTPUT = runTest(func, my_D)
 
 % I_NP            number of population members
 		I_NP = 150;  %pretty high number - needed for demo purposes only
 
 % I_itermax       maximum number of iterations (generations)
-		I_itermax = 600; 
+		I_itermax = 1001; 
        
 % F_weight        DE-stepsize F_weight ex [0, 2]
 		F_weight = 0.5; 
@@ -41,7 +41,6 @@ function runTest(func, my_D)
       I_plotting = 0;
 % I_D		number of parameters of the objective function 
     I_D = my_D; 
-    
     global S_struct;
     S_struct.I_NP         = I_NP;
     S_struct.F_weight     = F_weight;
@@ -67,6 +66,7 @@ function runTest(func, my_D)
 % Start of optimization
 %********************************************************************
 
-[FVr_x,S_y,I_nf] = deopt(func,S_struct);
+[FVr_x,S_y,I_nf,OUTPUT] = deopt(func,S_struct);
+a =1;
 
 end
