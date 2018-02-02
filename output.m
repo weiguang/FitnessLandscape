@@ -47,11 +47,11 @@ if (S_struct.I_D == 2 && ~strcmp(S_struct.TestFunctionType, 'CEC2017'))
 %   mesh(S_struct.FM_meshd);
   figure;
 end
-
-% grid on;
 % plot(1:iter, STA.a,'g');
 % xlabel('k');
 % ylabel('statistic sampling'); 
+
+% grid on;
 % 
 % figure;
 % plot(1:GM.T-1,[S_bestva(GM.select(1:GM.T-1)).FVr_oa]);
@@ -63,29 +63,30 @@ end
 % % xlabel('Landscape time');
 % % ylabel('Dynamic severity'); 
 % 
-% % figure;
-% % plot(1:iter, SDEV.a);
-% % xlabel('k');
-% % ylabel('standard deviation'); 
+
+%figure;
+plot(1:iter, SDEV.a);
+xlabel('迭代次数');
+ylabel('标准差'); 
 
 
-% figure;
-plot(1:iter, [S_bestva(:).FVr_oa],'r');
-xlabel('迭代k');
-ylabel('最优解Optimum');
+ figure;
+plot(1:iter, [S_bestva(:).FVr_oa],'o');
+xlabel('迭代次数');
+ylabel('种群最优解');
 hold on;
-plot(S_struct.bestval,'o');
+plot(S_struct.bestval,'*');
 hold off;
 
 figure;
 hist(pdist2(S_bestmem ,S_struct.bestmemit),20);
-xlabel('每一代最优个体到全局最优个体的距离');
+xlabel('最优个体到全局最优个体的欧式距离');
 ylabel('数量'); 
 
 
 figure;
 hist((STA.a),20);
-xlabel('统计采样的值');
+xlabel('样本平均值的标准偏差');
 ylabel('数量'); 
 
 

@@ -1,10 +1,10 @@
 function [FVr_x,S_y,I_nf] = runTestCEC(func_num,my_D)
 
 % I_NP            number of population members
-I_NP = 150;  %pretty high number - needed for demo purposes only
+I_NP = 200;  %pretty high number - needed for demo purposes only
 
 % I_itermax       maximum number of iterations (generations)
-I_itermax = 2000;
+I_itermax = 2001;
 
 % F_weight        DE-stepsize F_weight ex [0, 2]
 F_weight = 0.5;

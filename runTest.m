@@ -1,10 +1,10 @@
 function runTest(func, my_D)
 
 % I_NP            number of population members
-		I_NP = 150;  %pretty high number - needed for demo purposes only
+		I_NP = 200;  %pretty high number - needed for demo purposes only
 
 % I_itermax       maximum number of iterations (generations)
-		I_itermax = 600; 
+		I_itermax = 1000; 
        
 % F_weight        DE-stepsize F_weight ex [0, 2]
 		F_weight = 0.5; 

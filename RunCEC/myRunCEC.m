@@ -6,9 +6,9 @@ clear;
 %func_num = 1;
 % d=[2,10,30,50,100]; % cec2017
 
-d=[2,10,30];
+d=[10,30];
 [m n] = size(d);
-for func_num = 21:30
+for func_num = 4:30
     for i = 1:n
         con  = 1;
         while(con >0)
