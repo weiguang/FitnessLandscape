@@ -8,7 +8,7 @@ pop_size=100;
 iter_max=5000;
 runs=1;
 fhd=str2func('cec17_func');
-for i=3:3
+for i=9:9
     func_num=i;
     for j=1:runs
         i,j,

@@ -16,8 +16,8 @@ iter = Iter.iter;
 
 %Êä³ö
 Time
-fprintf(1,"function number = %d, D = %d \n", S_struct.func_num , I_D);
-fprintf(1,'Cfd = %.3f\n',FDC.Cfd);
+fprintf(1,"function name:%s, D = %d \n", S_struct.title , I_D);
+fprintf(1,'FDC.r = %.5f, Cfd = %.5f\n',FDC.r, FDC.Cfd);
 %fprintf(1,'Cfd = %.3f , Cfb = %.3f, FDC.r = = %.3f\n',FDC.Cfd,FDC.Cfb,FDC.r);
 fprintf(1,'Rd.r1 = %.3f , Rd.r5 = %.3f \n', Rd.r1,Rd.r5); 
 %fprintf(1,'FC.fm = %.3f \n', FC.fm(iter));

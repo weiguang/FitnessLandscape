@@ -417,23 +417,13 @@ if(flag ==0)
   diter =    I_iter; 
   dur = toc ;
 end
-%----A
 
-    FDC.Cfb = sum([S_bestva(1:iter).FVr_oa])/iter;
-%     FDC.Cd =  sqrt(abs([S_val(:).FVr_oa] - S_bestval.FVr_oa) + sum((bsxfun(@minus,FM_ui,FVr_bestmemit))'.^2))
-    FDC.Cd = sqrt( sum( (bsxfun(@minus,[S_bestmem(1:iter,:) [S_bestva(1:iter).FVr_oa]'],[S_struct.bestmemit  S_struct.bestval]) )'.^2));
-%     FDC.Cd2 = norm( (bsxfun(@minus,[S_bestmem(1:iter,:) [S_bestva(1:iter).FVr_oa]'],[S_struct.bestmemit  S_struct.bestval])) );
-%     FDC.Cd  = sum( ((bsxfun(@minus,[S_val(:).FVr_oa],S_bestval.FVr_oa).^2)' );
-    FDC.Cdb = sum(FDC.Cd)/iter;
-    FDC.Cfd = sum(([S_bestva(1:iter).FVr_oa] -  FDC.Cfb) .* (FDC.Cd - FDC.Cdb))/ iter;
-    FDC.af = std([S_bestva(1:iter).FVr_oa]);
-    FDC.ad = std(FDC.Cd);
-    FDC.r =  FDC.Cfd/FDC.af/FDC.ad;
-%     fprintf(1,'Cfd = %.3f , Cfb = %.3f, FDC.r = = %.3f\n',FDC.Cfd,FDC.Cfb,FDC.r);
- %   a=1;
-%      plot( FDC.r, FDC.Cfd);
-%      title('r与Cfd');
+S_bestva_FVr_oa = [S_bestva(1:iter).FVr_oa]'; % 每一代最优解，提取出来方便计算
 
+%----A. Fitness Distance Correlation(FDC)
+%---- new Version jam 20180202
+    FDC =  CalFDC(S_bestmem,S_bestva_FVr_oa,iter,S_struct)
+    a = 1;
 %-----B
 
 %     Rd.a=0.01; %选的空间段
@@ -593,6 +583,16 @@ output(OUTPUT, S_struct);
 
 
 s=1;
+end
+
+function FDC = CalFDC(S_bestmem,S_bestva_FVr_oa,iter,S_struct)
+    FDC.Cfb = sum(S_bestva_FVr_oa)/iter;
+    FDC.Cd = pdist2( S_bestmem(1:iter,:) ,S_struct.bestmemit);
+    FDC.Cdb = sum(FDC.Cd)/iter;
+    FDC.Cfd = sum((S_bestva_FVr_oa -  FDC.Cfb) .* (FDC.Cd - FDC.Cdb))/iter;
+    FDC.af = std2(S_bestva_FVr_oa);
+    FDC.ad = std2(FDC.Cd);
+    FDC.r =  FDC.Cfd/FDC.af/FDC.ad;
 end
 
 function S_MSE = getFitnessValue(fname,x, S_struct)

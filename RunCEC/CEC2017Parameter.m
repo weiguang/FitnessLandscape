@@ -25,7 +25,7 @@ FVr_minbound = -100*ones(1,I_D);
 FVr_maxbound = 100*ones(1,I_D);
 I_bnd_constr = 1;  %1: use bounds as bound constraints, 0: no bound constraints
 
-S_struct.title = sprintf('%s %d','function',func_num);
+S_struct.title = sprintf('%s %d','CEC2017 Function',func_num);
 
 switch func_num
     case 1
