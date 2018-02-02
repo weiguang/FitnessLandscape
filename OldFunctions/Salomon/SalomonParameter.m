@@ -30,13 +30,13 @@ function SalomonParameter()
 
 %-----Problem dependent constant values for plotting----------------
 %-----provided D = 2------------------------------------------------
-if (I_plotting >= 1)   
+if ( I_D == 2)   
     
    FVc_xx = [-100:.5:100]';
    FVc_yy = [-100:.5:100]';
 
    [FVr_x,FM_y]=meshgrid(FVc_xx',FVc_yy') ;
-   FM_meshd =  -cos(2*pi*sqrt(FVr_x.^2 + FM_y.^2)) + 0.1*sqrt(FVr_x.^2 + FM_y.^2)+1
+   FM_meshd =  -cos(2*pi*sqrt(FVr_x.^2 + FM_y.^2)) + 0.1*sqrt(FVr_x.^2 + FM_y.^2)+1;
    %20+((FVr_x).^2-10*cos(2*pi*FVr_x)) +...
     %    ((FM_y).^2-10*cos(2*pi*FM_y));
       

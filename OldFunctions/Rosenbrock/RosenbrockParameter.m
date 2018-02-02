@@ -36,7 +36,7 @@ if (I_D == 2)
    FVc_yy = [-2.048:.04:2.048]';
 
    [FVr_x,FM_y]=meshgrid(FVc_xx',FVc_yy') ;
-   FM_meshd = 100*(FM_y-FVr_x.^2).^2+(FVr_x-1).^2
+   FM_meshd = 100*(FM_y-FVr_x.^2).^2+(FVr_x-1).^2;
    %20+((FVr_x).^2-10*cos(2*pi*FVr_x)) +...
     %    ((FM_y).^2-10*cos(2*pi*FM_y));
       

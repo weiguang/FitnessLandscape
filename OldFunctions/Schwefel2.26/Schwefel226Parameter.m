@@ -31,13 +31,13 @@ function Schwefel226Parameter()
       
 %-----Problem dependent constant values for plotting----------------
 %-----provided D = 2------------------------------------------------
-if (I_plotting >= 1)   
+if ( I_D == 2)   
  
    FVc_xx = [-500:1:500]';
    FVc_yy = [-500:1:500]';
 
    [FVr_x,FM_y]=meshgrid(FVc_xx',FVc_yy') ;
-   FM_meshd =  -( FVr_x.*sin(sqrt(abs(FVr_x))) + FM_y.*sin(sqrt(abs(FM_y))))
+   FM_meshd =  -( FVr_x.*sin(sqrt(abs(FVr_x))) + FM_y.*sin(sqrt(abs(FM_y))));
    %20+((FVr_x).^2-10*cos(2*pi*FVr_x)) +...
     %    ((FM_y).^2-10*cos(2*pi*FM_y));
       

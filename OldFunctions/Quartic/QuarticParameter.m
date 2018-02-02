@@ -30,13 +30,13 @@ function QuarticParameter()
 
 %-----Problem dependent constant values for plotting---------------- 
  %-----provided D = 2------------------------------------------------
-if (I_plotting >= 1)   
+if ( I_D == 2)   
     
    FVc_xx = [-1.28:.02:1.28]';
    FVc_yy = [-1.28:.02:1.28]';
 
    [FVr_x,FM_y]=meshgrid(FVc_xx',FVc_yy') ;
-   FM_meshd =   1.* FVr_x.^4 + 2.* (FM_y.^4)
+   FM_meshd =   1.* FVr_x.^4 + 2.* (FM_y.^4);
    %20+((FVr_x).^2-10*cos(2*pi*FVr_x)) +...
     %    ((FM_y).^2-10*cos(2*pi*FM_y));
       

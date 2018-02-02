@@ -30,7 +30,7 @@ function  GoldsteinPriceParameter()
 
 %-----Problem dependent constant values for plotting----------------
 %-----provided D = 2------------------------------------------------
-if (I_plotting >= 1)   
+if (I_D == 2)   
    FVc_xx = [-2:.01:2]';
    FVc_yy = [-2:.01:2]';
 
