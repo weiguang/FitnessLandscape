@@ -2,10 +2,11 @@ clc;
 clear;
 %AddWorkPath;
 % d=[5,15,30];
-d=[10];
+d=[30];
 % d=[2];
 n = size(d,2);
-func_list = {'Ackley','Griewank','Quadric','Quartic','Rastrigin','Rosenbrock','Salomon','Schwefel222','Schwefel226','Spherical'};
+% func_list = {'Ackley','Griewank','Quadric','Quartic','Rastrigin','Rosenbrock','Salomon','Schwefel222','Schwefel226','Spherical'};
+func_list = {'Griewank','Quadric','Quartic','Rastrigin','Rosenbrock','Salomon','Schwefel222','Schwefel226'};
 func_list2 = {'Beale','GoldsteinPrice'}; %只能2维
 %  FDC = zeros(1,size(func_list,2));
 func_size = size(func_list,2);
@@ -25,7 +26,7 @@ for func = func_list
             con = 0;
         end
     end
-    input('输入继续:');
+%     input('输入继续:');
     
 end
 figure;

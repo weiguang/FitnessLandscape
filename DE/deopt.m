@@ -170,13 +170,13 @@ S_bestva(1) = S_bestval;      %best value
 SDEV.a(1) = std(FM_pop(:));
 
 
-%------jam add 2018.1---------------
-%生成一列在[1,n]范围内的m个不重复的整数
-STA.n = randi(I_NP);
-tp=randperm(I_NP);
-td=tp(1:STA.n);
+%------jam add 2018.1--------------- falg:STA
+%生成一列在[1,n]范围内的m个不重复的整数,m随机
+STA.n = randi([I_NP * 0.1, I_NP]);
+% STA.n = 100;
+tp=randperm(I_NP,STA.n);
 %选择对应的种群个体
-ts= FM_pop(td,:);
+ts= FM_pop(tp,:);
 STA.a(1) = std(ts(:))/sqrt(STA.n);
 
 %----------- Jam 20170516
@@ -215,12 +215,13 @@ FVr_ind  = zeros(4);
 FM_meanv = ones(I_NP,I_D);
 
 %% jam add 20180202  flag:dictance plot
-dis_temp = pdist2(S_bestmem(1,:) ,S_struct.bestmemit);
-plot(dis_temp,S_bestva(1).FVr_oa,'.');
-xlabel("个体到全局最优个体的欧式距离");
-ylabel("适应值");
-title(S_struct.title);
-hold on;
+% dis_temp = pdist2(S_bestmem(1,:) ,S_struct.bestmemit);
+% figure;
+% plot(dis_temp,S_bestva(1).FVr_oa,'.');
+% xlabel("个体到全局最优个体的欧式距离");
+% ylabel("适应值");
+% title(S_struct.title);
+% hold on;
 
 
 I_iter = 1;
@@ -343,8 +344,10 @@ while ((I_iter < I_itermax) & (S_bestval.FVr_oa(1) > F_VTR))
     
     
     %%Jam add 20180202  flag:dictance plot
-    dis_temp = pdist2(FM_ui(:,:),S_struct.bestmemit);
-    plot(dis_temp,[S_val.FVr_oa]','.');
+%     dis_temp = pdist2(FM_ui(:,:),S_struct.bestmemit);
+%     plot(dis_temp,[S_val.FVr_oa]','.');
+    
+    
     
     FVr_bestmemit = FVr_bestmem;       % freeze the best member of this iteration for the coming
     % iteration. This is needed for some of the strategies.
@@ -376,21 +379,22 @@ while ((I_iter < I_itermax) & (S_bestval.FVr_oa(1) > F_VTR))
     
     I_iter = I_iter + 1;
     
-    ts= FM_pop(td,:);
+    
     
     %----My Function By Jam 2016.5.30----------------------------------------------------
     S_bestmem(I_iter,:) = FVr_bestmemit; % best parameter vector
     S_bestva(I_iter) = S_bestval;      %best value
+    
     %--------SDEV
     SDEV.a(I_iter) = std(FM_pop(:));
     
     %----My Function By Jam 2018.1.3---------------------------
-    %------jam add 2018.1---------------
-    %生成一列在[1,n]范围内的m个不重复的整数
-    STA.n = randi(I_NP);
-    tp=randperm(I_NP);
-    td=tp(1:STA.n);
+    %------jam add 2018.1--------------- flag:STA
+    %生成一列在[I_NP * 0.1,n]范围内的m个不重复的整数,m随机
+    STA.n = randi([I_NP * 0.1, I_NP]);
+    tp=randperm(I_NP,STA.n);
     %选择对应的种群个体
+    ts= FM_pop(tp,:);
     %统计采样
     STA.a(I_iter) = std(ts(:))/sqrt(STA.n);
     
@@ -402,6 +406,10 @@ while ((I_iter < I_itermax) & (S_bestval.FVr_oa(1) > F_VTR))
         flag =1;
     end
     
+    %% jam add 20180202
+    %生成一列在[1,n]范围内的m个不重复的整数
+%     rdn = 100;
+%     rdm=randperm(rdn);
     
     %%%----jam  20170516   update F and CR
     %    favg_iter = sum([S_val(:).FVr_oa])/I_NP;
@@ -576,6 +584,11 @@ end
 GM.avg = sum(abs(GM.g))/(GM.T - 1);
 GM.dev = sqrt( sum(GM.avg-abs(GM.g).^2) / (GM.T - 1));
 %  plot(1:GM.T-1,[S_bestva(GM.select(1:GM.T-1)).FVr_oa]);
+
+
+
+
+
 
 allTime = toc;
 
