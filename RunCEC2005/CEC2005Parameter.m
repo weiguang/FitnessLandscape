@@ -1,4 +1,4 @@
-function CEC2017Parameter(func_num)
+function CEC2005Parameter(func_num)
 
 %clear;
 %clc;

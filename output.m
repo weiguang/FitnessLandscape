@@ -39,12 +39,8 @@ OUTPUT1(7) = (Iter.iter - Iter.diter)/Iter.iter;
 OUTPUT1(8) = ((Time.allTime - Time.dur)/Time.allTime);
 
 
-<<<<<<< HEAD
-if (S_struct.I_D == 2 && strcmp(S_struct.TestFunctionType, 'normal'))
-=======
 
-if (S_struct.I_D == 2 && ~strcmp(S_struct.TestFunctionType, 'CEC2017'))
->>>>>>> bf0716c650731a51803b1fde75fa1d0e564c133c
+if (S_struct.I_D == 2 && strcmp(S_struct.TestFunctionType, 'normal'))
   %----Define the mesh of samples----------------------------------
    [FVr_x,FM_y]=meshgrid(S_struct.FVc_xx',S_struct.FVc_yy') ;
    FM_meshd = S_struct.FM_meshd;

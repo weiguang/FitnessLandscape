@@ -1,4 +1,4 @@
-function [FVr_x,S_y,I_nf] = runTestCEC(func_num,my_D)
+function [FVr_x,S_y,I_nf,OUTPUT] = runTestCEC(func_num,my_D)
 
 % I_NP            number of population members
 I_NP = 200;  %pretty high number - needed for demo purposes only
@@ -75,6 +75,6 @@ initial_flag = 0;
 % Start of optimization
 %********************************************************************
 
-[FVr_x,S_y,I_nf] = deopt(func,S_struct);
+[FVr_x,S_y,I_nf,OUTPUT] = deopt(func,S_struct);
 
 end

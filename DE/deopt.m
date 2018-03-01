@@ -634,7 +634,6 @@ if(strcmp(S_struct.TestFunctionType, 'CEC2017'))
     S_MSE.FVr_ca    = 0;%no constraint array
     S_MSE.I_no      = 1;%number of objectives (costs)
     S_MSE.FVr_oa(1) = F_cost;
-<<<<<<< HEAD
 elseif(strcmp(S_struct.TestFunctionType, 'CEC2005'))
     fhd=str2func(fname);
    F_cost = feval(fhd,x,S_struct.func_num);
@@ -645,10 +644,6 @@ elseif(strcmp(S_struct.TestFunctionType, 'CEC2005'))
     S_MSE.FVr_oa(1) = F_cost;
 else 
    S_MSE = feval(fname,x,S_struct);
-=======
-else
-    S_MSE = feval(fname,x,S_struct);
->>>>>>> bf0716c650731a51803b1fde75fa1d0e564c133c
 end
 
 end
