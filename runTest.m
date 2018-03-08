@@ -41,6 +41,10 @@ function OUTPUT = runTest(func, my_D)
       I_plotting = 0;
 % I_D		number of parameters of the objective function 
     I_D = my_D; 
+
+% Fes max run
+    I_Fes = 9999999999
+
     global S_struct;
     S_struct.I_NP         = I_NP;
     S_struct.F_weight     = F_weight;
@@ -50,6 +54,8 @@ function OUTPUT = runTest(func, my_D)
     S_struct.I_strategy   = I_strategy;
     S_struct.I_refresh    = I_refresh;
     S_struct.I_plotting   = I_plotting;
+    
+    S_struct.I_Fes = I_Fes;
     
     %% setting test function
     S_struct.TestFunctionType  = 'normal';
