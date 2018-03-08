@@ -27,4 +27,8 @@ NEW: Add CEC2017 beanchmark
 
 2. CEC 2017
 * run `AddWorkPath.m` to add directory to search path.
-* run `RunCEC\myRunCEC.m`
+* run `RunCEC2017\myRunCEC2017.m`
+
+2. CEC 2005
+* run `AddWorkPath.m` to add directory to search path.
+* run `RunCEC2005\myRunCEC2005.m`
