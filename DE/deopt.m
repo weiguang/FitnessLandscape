@@ -225,7 +225,7 @@ FM_meanv = ones(I_NP,I_D);
 
 
 I_iter = 1;
-while ((I_iter < I_itermax) & (S_bestval.FVr_oa(1) > F_VTR))
+while ((I_iter < I_itermax) && (S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes > I_nfeval))
     
     
     
@@ -610,6 +610,7 @@ OUTPUT.Time = Time;
 OUTPUT.Iter = Iter;
 OUTPUT.S_bestva = S_bestva; % each iter best fitness
 OUTPUT.S_bestmem = S_bestmem; % each iter best individual
+OUTPUT.fname = fname;
 
 output(OUTPUT, S_struct);
 
@@ -625,7 +626,7 @@ FDC.ad = std2(FDC.Cd);
 FDC.r =  FDC.Cfd/FDC.af/FDC.ad;
 end
 
-function S_MSE = getFitnessValue(fname,x, S_struct)
+function S_MSE = getFitnessValue1(fname,x, S_struct)
 if(strcmp(S_struct.TestFunctionType, 'CEC2017'))
     fhd=str2func(fname);
     F_cost = feval(fhd,x',S_struct.func_num);
