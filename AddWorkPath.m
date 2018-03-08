@@ -3,6 +3,7 @@ function AddWorkPath()
 addpath(pwd);
 addpath(genpath([pwd '\DE']));
  addpath(genpath([pwd '\RunCEC']));
+  addpath(genpath([pwd '\Analyze']));
 
 % addpath(genpath([pwd '\OldFunctions']));
 
