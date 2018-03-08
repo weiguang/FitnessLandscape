@@ -1,10 +1,10 @@
 function [FVr_x,S_y,I_nf,OUTPUT] = runTestCEC(func_num,my_D)
 
 % I_NP            number of population members
-I_NP = 200;  %pretty high number - needed for demo purposes only
+I_NP = 250;  %pretty high number - needed for demo purposes only
 
 % I_itermax       maximum number of iterations (generations)
-I_itermax = 2001;
+I_itermax = 5001;
 
 % F_weight        DE-stepsize F_weight ex [0, 2]
 F_weight = 0.5;
@@ -42,6 +42,9 @@ I_plotting = 0;
 % I_D		number of parameters of the objective function
 I_D = my_D;
 
+% Fes max run
+I_Fes = 1000000;
+
 global S_struct;
 S_struct.I_NP         = I_NP;
 S_struct.F_weight     = F_weight;
@@ -51,6 +54,8 @@ S_struct.I_itermax    = I_itermax;
 S_struct.I_strategy   = I_strategy;
 S_struct.I_refresh    = I_refresh;
 S_struct.I_plotting   = I_plotting;
+
+S_struct.I_Fes = I_Fes;
 
 
 %% test function type
