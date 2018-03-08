@@ -1,21 +1,21 @@
 # FitnessLandscape
 
-使用几个适应度景观的指标分析DE
+浣跨敤鍑犱釜閫傚簲搴︽櫙瑙傜殑鎸囨爣鍒嗘瀽DE
 
 
-## CEC benchmark function
+# benchmark function
 
-> exist:
-
+ ## classical function:
+ 
 * Rosenbrock
 * Griewank
 * Ackley
 * Rastrigin
 * Quadric(Schwefel_102)
 
-> add:
+## CEC2005
+NEW: Add CEC2017 beanchmark
 
-* SphereCEC
 
 ## CEC2017
 NEW: Add CEC2017 beanchmark
