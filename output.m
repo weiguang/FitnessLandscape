@@ -51,9 +51,9 @@ if (S_struct.I_D == 2 && strcmp(S_struct.TestFunctionType, 'normal'))
 end
 
 %% Random walk
-[walk, S_MSE] = getRandomWalkFitness(S_struct, OUTPUT, 250, 2);
-autoCorrelation(S_MSE);
-t =1;
+% [walk, S_MSE] = getRandomWalkFitness(S_struct, OUTPUT, 250, 2);
+% autoCorrelation(S_MSE);
+% t =1;
 
 
 % plot(1:iter, STA.a,'g');

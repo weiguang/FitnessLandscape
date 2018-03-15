@@ -19,7 +19,7 @@ I_D =  S_struct.I_D;
 Xmin=[-100,-100,-100,-100,-100,-100,0,-32,-5,-5,-0.5,-pi,-3,-100,-5,-5,-5,-5,-5,-5,-5,-5,-5,-5,2];
 Xmax=[100,100,100,100,100,100,600,32,5,5,0.5,pi,1,100,5,5,5,5,5,5,5,5,5,5,5];
  
-S_struct.bestval = f_bias(func_num);
+S_struct.bestval = 0 %f_bias(func_num);
 F_VTR = S_struct.bestval + 0.0000000000001;   % F_VTR		"Value To Reach" (stop when ofunc < F_VTR)
 %I_bestmemit = 0;
 S_struct.bestmemit = o(1:I_D) %repmat(I_bestmemit,1,I_D);

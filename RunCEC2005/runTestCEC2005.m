@@ -4,7 +4,7 @@ function [FVr_x,S_y,I_nf,OUTPUT] = runTestCEC(func_num,my_D)
 I_NP = 250;  %pretty high number - needed for demo purposes only
 
 % I_itermax       maximum number of iterations (generations)
-I_itermax = 5001;
+I_itermax = 3001;
 
 % F_weight        DE-stepsize F_weight ex [0, 2]
 F_weight = 0.5;
@@ -43,7 +43,7 @@ I_plotting = 0;
 I_D = my_D;
 
 % Fes max run
-I_Fes = 1000000;
+I_Fes = I_D *10000;
 
 global S_struct;
 S_struct.I_NP         = I_NP;

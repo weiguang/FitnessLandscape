@@ -73,7 +73,7 @@ if initial_flag==0
     load fbias_data;
 end
 
-f=feval(fhd,x)+f_bias(func_num);
+f=feval(fhd,x); %+f_bias(func_num);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%Unimodal%%%%%%%%%%%%%%%%%%%%%%%%%%%
