@@ -416,13 +416,13 @@ while ((I_iter < I_itermax) && (S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes 
 %     rdm=randperm(rdn);
     
     %%%----jam  20170516   flag:update F and CR
-%        favg_iter = sum([S_val(:).FVr_oa])/I_NP;
-%        %change CR
-%         F_CR1 = F_CR(:,1);
-%         F_CR_mui =  favg_iter > [S_val(:).FVr_oa]';
-%         F_CR_mpo = F_CR_mui < 0.5;    % inverse mask
-%         F_CR1 = F_CR1 .* F_CR_mui  +   F_CR_mpo .* normrnd(0.5, 0.5, I_NP, 1);
-%         F_CR = repmat(F_CR1, 1, I_D);
+       favg_iter = sum([S_val(:).FVr_oa])/I_NP;
+       %change CR
+        F_CR1 = F_CR(:,1);
+        F_CR_mui =  favg_iter > [S_val(:).FVr_oa]';
+        F_CR_mpo = F_CR_mui < 0.5;    % inverse mask
+        F_CR1 = F_CR1 .* F_CR_mui  +   F_CR_mpo .* normrnd(0.5, 0.5, I_NP, 1);
+        F_CR = repmat(F_CR1, 1, I_D);
       %change F
 %         var_1 = (1 - favg_iter + [S_val(:).FVr_oa])';
 %         var_2 = 1 - favg_iter + S_bestval.FVr_oa;
@@ -615,6 +615,8 @@ OUTPUT.Iter = Iter;
 OUTPUT.S_bestva = S_bestva; % each iter best fitness
 OUTPUT.S_bestmem = S_bestmem; % each iter best individual
 OUTPUT.fname = fname;
+
+OUTPUT.S_bestval = S_bestval;
 
 output(OUTPUT, S_struct);
 

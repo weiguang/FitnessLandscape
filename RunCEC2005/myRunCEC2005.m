@@ -43,12 +43,14 @@ for func_num = 1:func_size
                  end                
                  con = 0;
     %             con = input('请输入‘回车’继续下一维，‘其他键’重跑，‘ctrl+c’ 结束:');
+            fdcsodeResult(problem) = OUTPUT.S_bestval;
             end
             end
     end
-     odeOut(problem,:) = outcome;
-     odeRe(problem,1) = mean(outcome);
-     odeRe(problem,2) = std(outcome);
+     fdcsodeOut(problem,:) = outcome;
+     fdcsodeRe(problem,1) = mean(outcome);
+     fdcsodeRe(problem,2) = std(outcome);
+     
 end
 
 % figure;
