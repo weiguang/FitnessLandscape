@@ -179,11 +179,14 @@ tp=randperm(I_NP,STA.n);
 ts= FM_pop(tp,:);
 STA.a(1) = std(ts(:))/sqrt(STA.n);
 
-%----------- Jam 20170516
-%     F_CR = repmat(F_CR, I_NP, I_D);
-%     F_epsilon = 0.1;
-%     F_weight_e = F_weight;
-%     F_weight = repmat(F_weight, I_NP, I_D);
+%end
+
+
+%----------- Jam 20170516 flag:update F and CR
+    F_CR = repmat(F_CR, I_NP, I_D);
+    F_epsilon = 0.1;
+    F_weight_e = F_weight;
+    F_weight = repmat(F_weight, I_NP, I_D);
 
 
 %-----------------------------------
@@ -359,7 +362,7 @@ while ((I_iter < I_itermax) && (S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes 
     
     if (I_refresh > 0)
         if ((rem(I_iter,I_refresh) == 0) || I_iter == 1)
-            fprintf(1,'Iteration: %d,  Best: %f,  F_weight: %f,  F_CR: %f,  I_NP: %d\n',I_iter,S_bestval.FVr_oa(1),F_weight,F_CR,I_NP);
+            fprintf(1,'Iteration: %d,  Best: %f,  F_weight: %f,  F_CR: %f,  I_NP: %d\n',I_iter,S_bestval.FVr_oa(1),F_weight(1),F_CR(1),I_NP);
             %var(FM_pop)
             format long e;
             for n=1:I_D
@@ -391,13 +394,14 @@ while ((I_iter < I_itermax) && (S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes 
     %----My Function By Jam 2018.1.3---------------------------
     %------jam add 2018.1--------------- flag:STA
     %生成一列在[I_NP * 0.1,n]范围内的m个不重复的整数,m随机
-    STA.n = randi([I_NP * 0.1, I_NP]);
-    tp=randperm(I_NP,STA.n);
-    %选择对应的种群个体
-    ts= FM_pop(tp,:);
-    %统计采样
-    STA.a(I_iter) = std(ts(:))/sqrt(STA.n);
+%     STA.n = randi([I_NP * 0.1, I_NP]);
+%     tp=randperm(I_NP,STA.n);
+%     %选择对应的种群个体
+%     ts= FM_pop(tp,:);
+%     %统计采样
+%     STA.a(I_iter) = std(ts(:))/sqrt(STA.n);
     
+    %end
     
     if ( abs (S_struct.bestval - S_bestval.FVr_oa) < accuracy & flag ==0)
         %    if (I_iter == 20)
@@ -411,24 +415,24 @@ while ((I_iter < I_itermax) && (S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes 
 %     rdn = 100;
 %     rdm=randperm(rdn);
     
-    %%%----jam  20170516   update F and CR
-    %    favg_iter = sum([S_val(:).FVr_oa])/I_NP;
-    %    %change CR
-    %     F_CR1 = F_CR(:,1);
-    %     F_CR_mui =  favg_iter > [S_val(:).FVr_oa]';
-    %     F_CR_mpo = F_CR_mui < 0.5;    % inverse mask
-    %     F_CR1 = F_CR1 .* F_CR_mui  +   F_CR_mpo .* normrnd(0.5, 0.5, I_NP, 1);
-    %     F_CR = repmat(F_CR1, 1, I_D);
-    %   %change F
-    %     var_1 = (1 - favg_iter + [S_val(:).FVr_oa])';
-    %     var_2 = 1 - favg_iter + S_bestval.FVr_oa;
-    %     var_r1 = rand(I_NP, 1);
-    %     var_r2 = rand(I_NP, 1);
-    %     F_weight_new =  F_weight_e + var_r1 .* ( var_1 / var_2);
-    %     F_weight_mui = or((favg_iter > [ S_val(:).FVr_oa]' ), (var_r2 < F_epsilon));
-    %     F_weight_mpo = F_weight_mui < 0.5;
-    %     F_weight = F_weight_new .* F_weight_mui + F_weight(:,1) .* F_weight_mpo;
-    %     F_weight = repmat(F_weight, 1, I_D);
+    %%%----jam  20170516   flag:update F and CR
+%        favg_iter = sum([S_val(:).FVr_oa])/I_NP;
+%        %change CR
+%         F_CR1 = F_CR(:,1);
+%         F_CR_mui =  favg_iter > [S_val(:).FVr_oa]';
+%         F_CR_mpo = F_CR_mui < 0.5;    % inverse mask
+%         F_CR1 = F_CR1 .* F_CR_mui  +   F_CR_mpo .* normrnd(0.5, 0.5, I_NP, 1);
+%         F_CR = repmat(F_CR1, 1, I_D);
+      %change F
+%         var_1 = (1 - favg_iter + [S_val(:).FVr_oa])';
+%         var_2 = 1 - favg_iter + S_bestval.FVr_oa;
+%         var_r1 = rand(I_NP, 1);
+%         var_r2 = rand(I_NP, 1);
+%         F_weight_new =  F_weight_e + var_r1 .* ( var_1 / var_2);
+%         F_weight_mui = or((favg_iter > [ S_val(:).FVr_oa]' ), (var_r2 < F_epsilon));
+%         F_weight_mpo = F_weight_mui < 0.5;
+%         F_weight = F_weight_new .* F_weight_mui + F_weight(:,1) .* F_weight_mpo;
+%         F_weight = repmat(F_weight, 1, I_D);
     
     
     
@@ -624,27 +628,4 @@ FDC.Cfd = sum((S_bestva_FVr_oa -  FDC.Cfb) .* (FDC.Cd - FDC.Cdb))/iter;
 FDC.af = std2(S_bestva_FVr_oa);
 FDC.ad = std2(FDC.Cd);
 FDC.r =  FDC.Cfd/FDC.af/FDC.ad;
-end
-
-function S_MSE = getFitnessValue1(fname,x, S_struct)
-if(strcmp(S_struct.TestFunctionType, 'CEC2017'))
-    fhd=str2func(fname);
-    F_cost = feval(fhd,x',S_struct.func_num);
-    %----strategy to put everything into a cost function------------
-    S_MSE.I_nc      = 0;%no constraints
-    S_MSE.FVr_ca    = 0;%no constraint array
-    S_MSE.I_no      = 1;%number of objectives (costs)
-    S_MSE.FVr_oa(1) = F_cost;
-elseif(strcmp(S_struct.TestFunctionType, 'CEC2005'))
-    fhd=str2func(fname);
-   F_cost = feval(fhd,x,S_struct.func_num);
-   %----strategy to put everything into a cost function------------
-    S_MSE.I_nc      = 0;%no constraints
-    S_MSE.FVr_ca    = 0;%no constraint array
-    S_MSE.I_no      = 1;%number of objectives (costs)
-    S_MSE.FVr_oa(1) = F_cost;
-else 
-   S_MSE = feval(fname,x,S_struct);
-end
-
 end

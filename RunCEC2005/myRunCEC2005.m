@@ -34,11 +34,11 @@ for func_num = 1:func_size
                 clc;
                  if (CheckFile(func_num,d(i))==0)
                     [FVr_x,S_y,I_nf,OUTPUT] = runTestCEC2005(func_num,d(i));
-                     FDC = [FDC OUTPUT.FDC];
+%                      FDC = [FDC OUTPUT.FDC];
                      title = sprintf("func %d ", func_num);
                      outcome = [outcome S_y.FVr_oa];
                  else
-                      FDC = [FDC FDC1];
+%                       FDC = [FDC FDC1];
                       outcome = [outcome NaN];
                  end                
                  con = 0;
@@ -46,9 +46,9 @@ for func_num = 1:func_size
             end
             end
     end
-     mydeOut(problem,:) = outcome;
-     mydeRe(problem,1) = mean(outcome);
-     mydeRe(problem,2) = std(outcome);
+     odeOut(problem,:) = outcome;
+     odeRe(problem,1) = mean(outcome);
+     odeRe(problem,2) = std(outcome);
 end
 
 % figure;
