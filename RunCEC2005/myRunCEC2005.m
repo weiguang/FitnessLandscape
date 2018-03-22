@@ -2,7 +2,7 @@ clc;
 clear;
 % addpath(genpath(pwd));
 
-d=[30];
+d=[50];
 [m n] = size(d);
 FDC = '';
 title = '';
@@ -24,7 +24,7 @@ totalTime = 25;
 
 result = zeros(func_size, totalTime);
 
-for func_num = 1:func_size
+for func_num = 23:func_size
     problem = func_num;
     for i = 1:n
         con  = 1;
@@ -43,7 +43,7 @@ for func_num = 1:func_size
                  end                
                  con = 0;
     %             con = input('请输入‘回车’继续下一维，‘其他键’重跑，‘ctrl+c’ 结束:');
-            fdcsodeResult(problem) = OUTPUT.S_bestval;
+            fdcsodeResult(problem,:)  = [OUTPUT.S_bestva.FVr_oa];
             end
             end
     end
