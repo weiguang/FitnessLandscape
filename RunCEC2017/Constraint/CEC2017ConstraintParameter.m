@@ -16,7 +16,13 @@ end
 load(fileName);
 
 
-S_struct.bestval = 0 %func_num * 100;
+global initial_flag;
+initial_flag = 0;
+x = o(1:I_D);
+f = CEC2017Constraint(x,func_num)
+initial_flag = 0;
+
+S_struct.bestval = f %func_num * 100;
 F_VTR = S_struct.bestval + 0.000000001;   % F_VTR		"Value To Reach" (stop when ofunc < F_VTR)
 %I_bestmemit = 0;
 S_struct.bestmemit = o(1:I_D) %repmat(I_bestmemit,1,I_D);

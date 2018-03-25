@@ -6,9 +6,16 @@ clear;
 %func_num = 1;
 % d=[2,10,30,50,100]; % cec2017
 
-d=[10,30];
+
+d=[30];
 [m n] = size(d);
-for func_num = 4:30
+
+funcList = [1:25];
+
+global H;
+H = zeros(size(funcList,2), 9);
+
+for func_num = funcList
     for i = 1:n
         con  = 1;
         while(con >0)
@@ -16,7 +23,8 @@ for func_num = 4:30
             if (CheckFile(func_num,d(i))==0)
                 [FVr_x,S_y,I_nf] = runTestCEC2017(func_num,d(i));
             end
-            con = input('请输入‘回车’继续下一维，‘其他键’重跑，‘ctrl+c’ 结束:');
+%             con = input('请输入‘回车’继续下一维，‘其他键’重跑，‘ctrl+c’ 结束:');
+              con = 0;
         end
     end
 end
