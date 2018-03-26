@@ -1,4 +1,4 @@
-function [FVr_x,S_y,I_nf] = runTestCEC(func_num,my_D)
+function [FVr_x,S_y,I_nf] = runTestCECConstraint(func_num,my_D)
 
 % I_NP            number of population members
 I_NP = 200;  %pretty high number - needed for demo purposes only
@@ -43,7 +43,7 @@ I_plotting = 0;
 I_D = my_D;
 
 % Fes max run
-I_Fes = 9999999999
+I_Fes = 20000 * I_D;
 
 global S_struct;
 S_struct.I_NP         = I_NP;
@@ -59,9 +59,9 @@ S_struct.I_Fes = I_Fes;
 
 
 %% test function type
-S_struct.TestFunctionType  = 'CEC2017';
+S_struct.TestFunctionType  = 'CEC2017Constraint';
 S_struct.func_num = func_num;
-func = 'cec17_func';
+func = 'CEC2017Constraint';
 % fhd=str2func(func);
 
 %% setting test function
@@ -77,19 +77,6 @@ feval(funcParameter,func_num);
 % Start of optimization
 %********************************************************************
 
-% [FVr_x,S_y,I_nf] = deopt(func,S_struct);
+[FVr_x,S_y,I_nf] = deopt(func,S_struct);
 
- [walk, S_MSE] = GetRandomWalkFitness(S_struct, func, 500, 1);
-AutoCorrelation(S_MSE,S_struct);
-
-t  = AnalyzeCEC(func_num,walk);
-
-global H;
-H(func_num,:) = t;
-
-FVr_x = 0;
-S_y = H;
-I_nf = 0;
-
-close all;
 end

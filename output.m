@@ -148,47 +148,5 @@ end
 
 end
 
-function [walk, S_MSE] = getRandomWalkFitness(S_struct, OUTPUT,varargin)
-    steps = 250;
-    if(nargin > 3)
-        steps = varargin{1};
-    end 
-    step_size = 2;
-    if(nargin > 4)
-        step_size = varargin{2};
-    end  
-    domain = [S_struct.FVr_minbound(1) S_struct.FVr_maxbound(1)]; 
-    walk = RandomWalk(S_struct.I_D, domain, steps, step_size);
-    S_MSE = getFitnessValue(OUTPUT.fname,walk,S_struct);
-    figure;
-    plot([S_MSE.FVr_oa]);
-    xlabel('Step');
-    ylabel('Fitness'); 
-    title(S_struct.title);
-end
 
-function autoCorrelation(S_MSE)
-fitness = [S_MSE.FVr_oa];
-fsize = (size(fitness,2) - 1);
-fb = mean(fitness);
-p =zeros(1, fsize);
-varf =  var(fitness);
-figure;
-hold on ;
 
-tf = [ fitness(2:size(fitness,2)) 0 ];
-Lag = tf - fitness;
-Lag = Lag(1:fsize);
-
-for i = 1: fsize
-    p(i) = (((fitness(i) * fitness(i+1) /fb) - fitness(i)/fb * fitness(i+1)/fb)) / varf;
-    %plot([i i],[0 p(i)]);
-end
-
-plot(Lag,p);
-
-xlabel('Lag');
-ylabel('Auto Correlation Function');
-
-hold off;
-end

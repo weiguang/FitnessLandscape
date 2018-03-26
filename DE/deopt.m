@@ -80,6 +80,10 @@
 function [FVr_bestmem,S_bestval,I_nfeval,OUTPUT] = deopt(fname,S_struct)
 
 accuracy = 0.0001;
+
+global initial_flag;
+initial_flag = 0;
+
 %-----This is just for notational convenience and to keep the code uncluttered.--------
 I_NP         = S_struct.I_NP;
 F_weight     = S_struct.F_weight;
@@ -183,10 +187,10 @@ STA.a(1) = std(ts(:))/sqrt(STA.n);
 
 
 %----------- Jam 20170516 flag:update F and CR
-    F_CR = repmat(F_CR, I_NP, I_D);
-    F_epsilon = 0.1;
-    F_weight_e = F_weight;
-    F_weight = repmat(F_weight, I_NP, I_D);
+%     F_CR = repmat(F_CR, I_NP, I_D);
+%     F_epsilon = 0.1;
+%     F_weight_e = F_weight;
+%     F_weight = repmat(F_weight, I_NP, I_D);
 
 
 %-----------------------------------
@@ -218,18 +222,18 @@ FVr_ind  = zeros(4);
 FM_meanv = ones(I_NP,I_D);
 
 %% jam add 20180202  flag:dictance plot
-% dis_temp = pdist2(S_bestmem(1,:) ,S_struct.bestmemit);
-% figure;
-% plot(dis_temp,S_bestva(1).FVr_oa,'.');
-% xlabel("个体到全局最优个体的欧式距离");
-% ylabel("适应值");
-% title(S_struct.title);
-% hold on;
+dis_temp = pdist2(S_bestmem(1,:) ,S_struct.bestmemit);
+figure;
+plot(dis_temp,S_bestva(1).FVr_oa,'.');
+xlabel("个体到全局最优个体的欧式距离");
+ylabel("适应值");
+title(S_struct.title);
+hold on;
 
 
 I_iter = 1;
-while ((I_iter < I_itermax) && (S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes > I_nfeval))
-    
+% while ((I_iter < I_itermax) && (S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes > I_nfeval))
+while ((S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes > I_nfeval))    
     
     
     
@@ -347,8 +351,8 @@ while ((I_iter < I_itermax) && (S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes 
     
     
     %%Jam add 20180202  flag:dictance plot
-%     dis_temp = pdist2(FM_ui(:,:),S_struct.bestmemit);
-%     plot(dis_temp,[S_val.FVr_oa]','.');
+    dis_temp = pdist2(FM_ui(:,:),S_struct.bestmemit);
+    plot(dis_temp,[S_val.FVr_oa]','.');
     
     
     
@@ -416,13 +420,13 @@ while ((I_iter < I_itermax) && (S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes 
 %     rdm=randperm(rdn);
     
     %%%----jam  20170516   flag:update F and CR
-       favg_iter = sum([S_val(:).FVr_oa])/I_NP;
-       %change CR
-        F_CR1 = F_CR(:,1);
-        F_CR_mui =  favg_iter > [S_val(:).FVr_oa]';
-        F_CR_mpo = F_CR_mui < 0.5;    % inverse mask
-        F_CR1 = F_CR1 .* F_CR_mui  +   F_CR_mpo .* normrnd(0.5, 0.5, I_NP, 1);
-        F_CR = repmat(F_CR1, 1, I_D);
+%        favg_iter = sum([S_val(:).FVr_oa])/I_NP;
+%        %change CR
+%         F_CR1 = F_CR(:,1);
+%         F_CR_mui =  favg_iter > [S_val(:).FVr_oa]';
+%         F_CR_mpo = F_CR_mui < 0.5;    % inverse mask
+%         F_CR1 = F_CR1 .* F_CR_mui  +   F_CR_mpo .* normrnd(0.5, 0.5, I_NP, 1);
+%         F_CR = repmat(F_CR1, 1, I_D);
       %change F
 %         var_1 = (1 - favg_iter + [S_val(:).FVr_oa])';
 %         var_2 = 1 - favg_iter + S_bestval.FVr_oa;
@@ -615,8 +619,6 @@ OUTPUT.Iter = Iter;
 OUTPUT.S_bestva = S_bestva; % each iter best fitness
 OUTPUT.S_bestmem = S_bestmem; % each iter best individual
 OUTPUT.fname = fname;
-
-OUTPUT.S_bestval = S_bestval;
 
 output(OUTPUT, S_struct);
 
