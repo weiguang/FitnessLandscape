@@ -19,13 +19,13 @@ for i = 1: fsize
 end
 % plot(Lag,p);
 
-% hist(p);
+hist(p);
 
-% xlabel('Lag');
-% ylabel('Autocorrelation');
-% title(S_struct.title);
-% 
-% hold off;
-% print(gcf,'-dpng', ['L:\workspaces\matlab\FitnessLandscape\img\',S_struct.title, ' Autocorrelation.png']);
+xlabel('Lag');
+ylabel('Autocorrelation');
+title(S_struct.title);
+
+hold off;
+print(gcf,'-dpng', ['D:\workspace\matlab\FitnessLandscape\img\',S_struct.title, ' Autocorrelation.png']);
 
 end

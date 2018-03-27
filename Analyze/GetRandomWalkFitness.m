@@ -11,11 +11,11 @@ function [walk, S_MSE] = GetRandomWalkFitness(S_struct, fname,varargin)
     walk = RandomWalk(S_struct.I_D, domain, steps, step_size);
     S_MSE = getFitnessValue(fname,walk,S_struct);
     
-%     figure;
-%     plot([S_MSE.FVr_oa]);
-%     xlabel('Step');
-%     ylabel('Fitness'); 
-%     title(S_struct.title);
-%     print(gcf,'-dpng', ['L:\workspaces\matlab\FitnessLandscape\img\',S_struct.title, ' RandomWalk.png']);  
+    figure;
+    plot([S_MSE.FVr_oa]);
+    xlabel('Step');
+    ylabel('Fitness'); 
+    title(S_struct.title);
+    print(gcf,'-dpng', ['D:\workspace\matlab\FitnessLandscape\img\',S_struct.title, ' RandomWalk.png']);  
     
 end
