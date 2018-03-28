@@ -222,13 +222,13 @@ FVr_ind  = zeros(4);
 FM_meanv = ones(I_NP,I_D);
 
 %% jam add 20180202  flag:dictance plot
-dis_temp = pdist2(S_bestmem(1,:) ,S_struct.bestmemit);
-figure;
-plot(dis_temp,S_bestva(1).FVr_oa,'.');
-xlabel("个体到全局最优个体的欧式距离");
-ylabel("适应值");
-title(S_struct.title);
-hold on;
+% dis_temp = pdist2(S_bestmem(1,:) ,S_struct.bestmemit);
+% figure;
+% plot(dis_temp,S_bestva(1).FVr_oa,'.');
+% xlabel("个体到全局最优个体的欧式距离");
+% ylabel("适应值");
+% title(S_struct.title);
+% hold on;
 
 
 I_iter = 1;
@@ -351,9 +351,9 @@ while ((S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes > I_nfeval))
     
     
     %%Jam add 20180202  flag:dictance plot
-    dis_temp = pdist2(FM_ui(:,:),S_struct.bestmemit);
-    plot(dis_temp,[S_val.FVr_oa]','.');
-    
+%     dis_temp = pdist2(FM_ui(:,:),S_struct.bestmemit);
+%     plot(dis_temp,[S_val.FVr_oa]','.');
+%     
     
     
     FVr_bestmemit = FVr_bestmem;       % freeze the best member of this iteration for the coming

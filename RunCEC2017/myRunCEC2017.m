@@ -7,24 +7,33 @@ clear;
 % d=[2,10,30,50,100]; % cec2017
 
 
-d=[30];
+d=[50];
 [m n] = size(d);
 
 funcList = [1:25];
+
+alltime = 25;
+
+result = [];
 
 global H;
 H = zeros(size(funcList,2), 9);
 
 for func_num = funcList
-    for i = 1:n
-        con  = 1;
-        while(con >0)
-            clc;
-            if (CheckFile(func_num,d(i))==0)
-                [FVr_x,S_y,I_nf] = runTestCEC2017(func_num,d(i));
+    for time = 1:alltime
+        for i = 1:n
+            con  = 1;
+            while(con >0)
+                clc;
+                if (CheckFile(func_num,d(i))==0)
+                    [FVr_x,S_y,I_nf] = runTestCEC2017(func_num,d(i));
+                    result(func_num, time) = S_y.FVr_oa(1);
+                else
+                    result(func_num, time) = 0;
+                end
+                %             con = input('请输入‘回车’继续下一维，‘其他键’重跑，‘ctrl+c’ 结束:');
+                con = 0;
             end
-%             con = input('请输入‘回车’继续下一维，‘其他键’重跑，‘ctrl+c’ 结束:');
-              con = 0;
         end
     end
 end

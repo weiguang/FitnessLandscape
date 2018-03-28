@@ -80,13 +80,13 @@ end
 % ylabel('标准差'); 
 % 
 % 
-%  figure;
-% plot(1:iter, [S_bestva(:).FVr_oa],'o');
-% xlabel('迭代次数');
-% ylabel('种群最优解');
-% hold on;
-% plot(S_struct.bestval,'*');
-% hold off;
+ figure;
+plot(1:iter, [S_bestva(:).FVr_oa],'o');
+xlabel('迭代次数');
+ylabel('种群最优解');
+hold on;
+plot(S_struct.bestval,'*');
+hold off;
 % 
 % figure;
 % hist(pdist2(S_bestmem ,S_struct.bestmemit),20);
