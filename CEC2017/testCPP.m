@@ -1,4 +1,4 @@
-%   mex cec17_func.cpp -DWINDOWS
+%  mex cec17_func.cpp -DWINDOWS
 function [fitness] = testCPP()
 func_num = 3;
 D = 2;
