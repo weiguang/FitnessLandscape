@@ -2,6 +2,7 @@
 test.mlx
 
 #Matlab
+.mexw64
 *.mexw64
 */*.mexw64
 *.asv
