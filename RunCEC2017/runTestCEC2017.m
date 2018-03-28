@@ -43,7 +43,7 @@ I_plotting = 0;
 I_D = my_D;
 
 % Fes max run
-I_Fes = 9999999999
+I_Fes = 1000
 
 global S_struct;
 S_struct.I_NP         = I_NP;
@@ -77,19 +77,21 @@ feval(funcParameter,func_num);
 % Start of optimization
 %********************************************************************
 
-% [FVr_x,S_y,I_nf] = deopt(func,S_struct);
+[FVr_x,S_y,I_nf] = deopt(func,S_struct);
 
-[walk, S_MSE] = GetRandomWalkFitness(S_struct, func, 500, 1);
-AutoCorrelation(S_MSE, S_struct);
+% [walk, S_MSE] = GetRandomWalkFitness(S_struct, func, 500, 1);
+% AutoCorrelation(S_MSE, S_struct);
+% 
+% t  = AnalyzeCEC(func_num, walk);
+% 
+% global H;
+% H(func_num,:) = t;
+% 
+% FVr_x = 0;
+% S_y = H;
+% I_nf = 0;
+% 
+% close all;
 
-t  = AnalyzeCEC(func_num, walk);
 
-global H;
-H(func_num,:) = t;
-
-FVr_x = 0;
-S_y = H;
-I_nf = 0;
-
-close all;
 end
