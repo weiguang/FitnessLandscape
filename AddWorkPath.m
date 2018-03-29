@@ -16,7 +16,10 @@ addpath(genpath([pwd '\DE']));
 %  cd ..
 
 addpath(genpath([pwd '\ZDT']));
-addpath(genpath([pwd '\MOP']));
+addpath(genpath([pwd '\RunZDT']));
 
+
+addpath(genpath([pwd '\DTLZ']));
+addpath(genpath([pwd '\RunDTLZ']));
 
 end
