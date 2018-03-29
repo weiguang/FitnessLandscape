@@ -1,4 +1,4 @@
-function H = AnalyzeCEC(func_num, walk)
+function H = AnalyzeCEC(fname,func_num, walk)
 %UNTITLED2 此处显示有关此函数的摘要
 %   此处显示详细说明
 %  func_num = 25;
@@ -13,8 +13,14 @@ eps = 2;
 steps = size(walk,1);
 % dim = size(walk,2);
 
-fhd=str2func('cec17_func');
-fitness = feval(fhd,walk',func_num);
+fhd=str2func(fname);
+if strcmp(fname,'CEC2017')
+     fitness = feval(fhd,walk',func_num);
+else
+    fitness = feval(fhd,walk,func_num)';
+end
+% for mutiobjective
+fitness = sum(fitness);
 
 temp  = ([0 fitness]);
 diff = fitness - temp(1:steps);
