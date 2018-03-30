@@ -47,6 +47,16 @@ elseif(strcmp(S_struct.TestFunctionType, 'CEC2005'))
         S_MSE(i).I_no      = 1;%number of objectives (costs)
         S_MSE(i).FVr_oa = sum(0.5 * F_cost(i,:),2);
     end
+   elseif(strcmp(S_struct.TestFunctionType, 'dtlz'))
+    fhd=str2func(fname);
+   %----strategy to put everything into a cost function------------
+    for i = 1:size(x,1)
+        F_cost(i,:) = feval(fhd,x(i,:)',S_struct.func_num);
+        S_MSE(i).I_nc      = 0;%no constraints
+        S_MSE(i).FVr_ca    = 0;%no constraint array
+        S_MSE(i).I_no      = 1;%number of objectives (costs)
+        S_MSE(i).FVr_oa = sum(0.5 * F_cost(i,:),2);
+    end
 else
     for i  = 1 : size(x,1)
         S_MSE(i) = feval(fname,x(i,:),S_struct);

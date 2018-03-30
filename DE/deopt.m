@@ -225,7 +225,7 @@ I_iter = 1;
 
 %% jam add 20180202  flag:dictance plot
 % figure;
-% if(strcmp(S_struct.TestFunctionType, 'ZDT'))
+% if(strcmp(S_struct.TestFunctionType, 'ZDT') || strcmp(S_struct.TestFunctionType, 'dtlz'))
 %     plot(I_iter, S_bestva(1).FVr_oa,'.');
 %     xlabel("µü´úÊý");
 % else
@@ -360,7 +360,7 @@ while ((S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes > I_nfeval))
   I_iter =  I_iter + 1;   
     
     %%Jam add 20180202  flag:dictance plot
-% if(strcmp(S_struct.TestFunctionType, 'ZDT'))
+% if(strcmp(S_struct.TestFunctionType, 'ZDT') || strcmp(S_struct.TestFunctionType, 'dtlz'))
 %     plot(I_iter, [S_val.FVr_oa], '.');
 % else
 %     dis_temp = pdist2(FM_ui(:,:),S_struct.bestmemit);
