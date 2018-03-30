@@ -82,7 +82,7 @@ feval(funcParameter,func_num);
 % [walk, S_MSE] = GetRandomWalkFitness(S_struct, func, 500, 1);
 % AutoCorrelation(S_MSE, S_struct);
 % 
-% t  = AnalyzeCEC(func,func_num, walk);
+% t  = AnalyzeCEC(S_struct,func,func_num, walk);
 % 
 % global H;
 % H(func_num,:) = t;
