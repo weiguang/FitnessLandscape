@@ -6,7 +6,7 @@ funcList = [1,2,3,4,5,6];
 alltime = 1;
 result = [];
 FDC = '';
-M = 2;
+M = 3;
 
 global H;
 H = zeros(size(funcList,2), 9);
@@ -15,11 +15,11 @@ for func_num = funcList
     for time = 1:alltime
             [d, k] = dtlzSetting(['dtlz', num2str(func_num)],M);
             [FVr_x,S_y,I_nf,OUTPUT] = runTestDTLZ(func_num,d);
-%             FDC = [FDC OUTPUT.FDC];
+            FDC = [FDC OUTPUT.FDC];
 %             result(func_num, time) = S_y.FVr_oa; 
     end
 end
-% plotFDC(FDC);
+plotFDC(FDC);
 
 function plotFDC(FDC)
     figure;

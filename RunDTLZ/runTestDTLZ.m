@@ -77,21 +77,21 @@ feval(funcParameter,func_num);
 % Start of optimization
 %********************************************************************
 
-% [FVr_x,S_y,I_nf,OUTPUT] = deopt(func,S_struct);
+[FVr_x,S_y,I_nf,OUTPUT] = deopt(func,S_struct);
 
-[walk, S_MSE] = GetRandomWalkFitness(S_struct, func, 500, 1);
-AutoCorrelation(S_MSE, S_struct);
-
-t  = AnalyzeCEC(S_struct,func,func_num, walk);
-
-global H;
-H(func_num,:) = t;
-
-FVr_x = 0;
-S_y = H;
-I_nf = 0;
-
-close all;
-OUTPUT =0;
+% [walk, S_MSE] = GetRandomWalkFitness(S_struct, func, 500, 1);
+% AutoCorrelation(S_MSE, S_struct);
+% 
+% t  = AnalyzeCEC(S_struct,func,func_num, walk);
+% 
+% global H;
+% H(func_num,:) = t;
+% 
+% FVr_x = 0;
+% S_y = H;
+% I_nf = 0;
+% 
+% close all;
+% OUTPUT =0;
 
 end

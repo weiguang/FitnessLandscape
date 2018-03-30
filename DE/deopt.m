@@ -224,18 +224,18 @@ FM_meanv = ones(I_NP,I_D);
 I_iter = 1;
 
 %% jam add 20180202  flag:dictance plot
-% figure;
-% if(strcmp(S_struct.TestFunctionType, 'ZDT') || strcmp(S_struct.TestFunctionType, 'dtlz'))
-%     plot(I_iter, S_bestva(1).FVr_oa,'.');
-%     xlabel("迭代数");
-% else
-%     dis_temp = pdist2(S_bestmem(1,:) ,S_struct.bestmemit);
-%     plot(dis_temp,S_bestva(1).FVr_oa,'.');
-%     xlabel("个体到全局最优个体的欧式距离");
-% end
-% ylabel("适应值");
-% title(S_struct.title);
-% hold on;
+figure;
+if(strcmp(S_struct.TestFunctionType, 'ZDT') || strcmp(S_struct.TestFunctionType, 'dtlz'))
+    plot(I_iter, S_bestva(1).FVr_oa,'.');
+    xlabel("迭代数");
+else
+    dis_temp = pdist2(S_bestmem(1,:) ,S_struct.bestmemit);
+    plot(dis_temp,S_bestva(1).FVr_oa,'.');
+    xlabel("个体到全局最优个体的欧式距离");
+end
+ylabel("适应值");
+title(S_struct.title);
+hold on;
 
 
 
@@ -360,12 +360,12 @@ while ((S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes > I_nfeval))
   I_iter =  I_iter + 1;   
     
     %%Jam add 20180202  flag:dictance plot
-% if(strcmp(S_struct.TestFunctionType, 'ZDT') || strcmp(S_struct.TestFunctionType, 'dtlz'))
-%     plot(I_iter, [S_val.FVr_oa], '.');
-% else
-%     dis_temp = pdist2(FM_ui(:,:),S_struct.bestmemit);
-%     plot(dis_temp,[S_val.FVr_oa]','.');
-% end
+if(strcmp(S_struct.TestFunctionType, 'ZDT') || strcmp(S_struct.TestFunctionType, 'dtlz'))
+    plot(I_iter, [S_val.FVr_oa], '.');
+else
+    dis_temp = pdist2(FM_ui(:,:),S_struct.bestmemit);
+    plot(dis_temp,[S_val.FVr_oa]','.');
+end
 
 %     
     
