@@ -10,7 +10,7 @@ clear;
 d=[10];
 [m n] = size(d);
 
-func_list = [1:3];
+func_list = [1:1];
 
 alltime = 1;
 

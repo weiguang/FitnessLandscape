@@ -1,4 +1,4 @@
-function H = AnalyzeCEC(S_struct,fname,func_num, walk)
+function H = AnalyzeH(fitness)
 %UNTITLED2 此处显示有关此函数的摘要
 %   此处显示详细说明
 %  func_num = 25;
@@ -9,16 +9,17 @@ eps = 2;
 % step_size = 1;
 % walk = RandomWalk(dim,domain,steps,step_size);
 
-steps = size(walk,1);
+steps = size(fitness,1);
 % dim = size(walk,2);
 
-fhd=str2func(fname);
-if strcmp(fname,'CEC2017')
-     fitness = feval(fhd,walk',func_num);
-else
-    S_MSE = getFitnessValue(fname,walk,S_struct);
-    fitness = [S_MSE.FVr_oa];
-end
+% fhd=str2func(fname);
+% if strcmp(fname,'CEC2017')
+%      fitness = feval(fhd,walk',S_struct.func_num);
+% else
+%     S_MSE = getFitnessValue(fname,walk,S_struct);
+%     fitness = [S_MSE.FVr_oa];
+% end
+
 % for mutiobjective
 % fitness = sum(fitness);
 
