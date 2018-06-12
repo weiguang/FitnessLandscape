@@ -4,7 +4,7 @@ addpath(pwd);
 addpath(genpath([pwd '\DE']));
   addpath(genpath([pwd '\Analyze']));
 
-% addpath(genpath([pwd '\OldFunctions']));
+addpath(genpath([pwd '\OldFunctions']));
 
 % addpath(genpath([pwd '\CEC2005']));
 % addpath(genpath([pwd '\RunCEC2005']));
