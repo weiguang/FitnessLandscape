@@ -9,8 +9,8 @@ if(strfind(S_struct.TestFunctionType, 'CEC') == 1)
 end
 
 AutoCorrelation(S_MSE, S_struct);
-    t  = AnalyzeH([S_MSE.FVr_oa]);
-    H(func_num,:) = t;
+    th  = AnalyzeH([S_MSE.FVr_oa]);
+    H(func_num,:) = th;
 %     GetEntropy(H,S_struct.TestFunctionType)
 
 end

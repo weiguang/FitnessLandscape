@@ -9,7 +9,7 @@ eps = 2;
 % step_size = 1;
 % walk = RandomWalk(dim,domain,steps,step_size);
 
-steps = size(fitness,1);
+steps = size(fitness,2);
 % dim = size(walk,2);
 
 % fhd=str2func(fname);
