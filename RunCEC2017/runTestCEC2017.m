@@ -1,4 +1,4 @@
-function [FVr_x,S_y,I_nf] = runTestCEC(func_num,my_D)
+function [FVr_x,S_y,I_nf,OUTPUT] = runTestCEC2017(func_num,my_D)
 
 % I_NP            number of population members
 I_NP = 200;  %pretty high number - needed for demo purposes only
@@ -77,7 +77,10 @@ feval(funcParameter,func_num);
 % Start of optimization
 %********************************************************************
 
-[FVr_x,S_y,I_nf] = deopt(func,S_struct);
+AnalyzeProblem(S_struct,func);
+
+[FVr_x,S_y,I_nf,OUTPUT] = deopt(func,S_struct);
+
 
 % [walk, S_MSE] = GetRandomWalkFitness(S_struct, func, 500, 1);
 % AutoCorrelation(S_MSE, S_struct);

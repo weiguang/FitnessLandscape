@@ -80,6 +80,8 @@ initial_flag = 0;
 % Start of optimization
 %********************************************************************
 
+AnalyzeProblem(S_struct,func);
+
 [FVr_x,S_y,I_nf,OUTPUT] = deopt(func,S_struct);
 
 end
