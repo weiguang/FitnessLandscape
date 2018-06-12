@@ -1,10 +1,10 @@
 function [walk, S_MSE] = GetRandomWalkFitness(S_struct, fname,varargin)
     steps = 250;
-    if(nargin > 3)
+    if(nargin > 2)
         steps = varargin{1};
     end 
     step_size = 2;
-    if(nargin > 4)
+    if(nargin > 3)
         step_size = varargin{2};
     end  
     domain = [S_struct.FVr_minbound(1) S_struct.FVr_maxbound(1)]; 
@@ -16,6 +16,8 @@ function [walk, S_MSE] = GetRandomWalkFitness(S_struct, fname,varargin)
     xlabel('Step');
     ylabel('Fitness'); 
     title(S_struct.title);
-    print(gcf,'-dpng', ['D:\workspace\matlab\FitnessLandscape\img\',S_struct.title, ' RandomWalk.png']);  
-    
+    path = 'L:\workspaces\matlab\FitnessLandscape\img\RandomWalk\';
+    print(gcf,'-dpng', [path,S_struct.title, ' RandomWalk.png']);  
 end
+
+% maxH = max(H')'

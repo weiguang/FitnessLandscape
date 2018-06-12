@@ -1,4 +1,4 @@
-function [FVr_x,S_y,I_nf,OUTPUT] = runTestCEC2017(func_num,my_D)
+function [FVr_x,S_y,I_nf,OUTPUT] = runTestZDT(func_num,my_D)
 
 % I_NP            number of population members
 I_NP = 200;  %pretty high number - needed for demo purposes only
@@ -43,7 +43,7 @@ I_plotting = 0;
 I_D = my_D;
 
 % Fes max run
-I_Fes = 1000
+I_Fes = 6000 * I_D
 
 global S_struct;
 S_struct.I_NP         = I_NP;
@@ -59,13 +59,13 @@ S_struct.I_Fes = I_Fes;
 
 
 %% test function type
-S_struct.TestFunctionType  = 'CEC2017';
+S_struct.TestFunctionType  = 'dtlz';
 S_struct.func_num = func_num;
-func = 'cec17_func';
+func = ['dtlz'];
 % fhd=str2func(func);
 
 %% setting test function
-funcParameter = [S_struct.TestFunctionType 'Parameter'];
+funcParameter = [func 'Parameter'];
 feval(funcParameter,func_num);
 
 % S_struct.FVr_minbound = FVr_minbound;
@@ -77,24 +77,21 @@ feval(funcParameter,func_num);
 % Start of optimization
 %********************************************************************
 
-AnalyzeProblem(S_struct,func);
+% [FVr_x,S_y,I_nf,OUTPUT] = deopt(func,S_struct);
 
-[FVr_x,S_y,I_nf,OUTPUT] = deopt(func,S_struct);
+[walk, S_MSE] = GetRandomWalkFitness(S_struct, func, 500, 1);
+AutoCorrelation(S_MSE, S_struct);
 
+t  = AnalyzeCEC(S_struct,func,func_num, walk);
 
-% [walk, S_MSE] = GetRandomWalkFitness(S_struct, func, 500, 1);
-% AutoCorrelation(S_MSE, S_struct);
-% 
-% t  = AnalyzeCEC(func_num, walk);
-% 
-% global H;
-% H(func_num,:) = t;
-% 
-% FVr_x = 0;
-% S_y = H;
-% I_nf = 0;
-% 
-% close all;
+global H;
+H(func_num,:) = t;
 
+FVr_x = 0;
+S_y = H;
+I_nf = 0;
+
+close all;
+OUTPUT =0;
 
 end

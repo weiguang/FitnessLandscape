@@ -221,17 +221,24 @@ FVr_ind  = zeros(4);
 
 FM_meanv = ones(I_NP,I_D);
 
-%% jam add 20180202  flag:dictance plot
-% dis_temp = pdist2(S_bestmem(1,:) ,S_struct.bestmemit);
-% figure;
-% plot(dis_temp,S_bestva(1).FVr_oa,'.');
-% xlabel("个体到全局最优个体的欧式距离");
-% ylabel("适应值");
-% title(S_struct.title);
-% hold on;
-
-
 I_iter = 1;
+
+%% jam add 20180202  flag:dictance plot
+figure;
+if(strcmp(S_struct.TestFunctionType, 'ZDT') || strcmp(S_struct.TestFunctionType, 'dtlz'))
+    plot(I_iter, S_bestva(1).FVr_oa,'.');
+    xlabel("迭代数");
+else
+    dis_temp = pdist2(S_bestmem(1,:) ,S_struct.bestmemit);
+    plot(dis_temp,S_bestva(1).FVr_oa,'.');
+    xlabel("个体到全局最优个体的欧式距离");
+end
+ylabel("适应值");
+title(S_struct.title);
+hold on;
+
+
+
 % while ((I_iter < I_itermax) && (S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes > I_nfeval))
 while ((S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes > I_nfeval))    
     
@@ -350,9 +357,16 @@ while ((S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes > I_nfeval))
     end % for k = 1:NP
     
     
+  I_iter =  I_iter + 1;   
+    
     %%Jam add 20180202  flag:dictance plot
-%     dis_temp = pdist2(FM_ui(:,:),S_struct.bestmemit);
-%     plot(dis_temp,[S_val.FVr_oa]','.');
+if(strcmp(S_struct.TestFunctionType, 'ZDT') || strcmp(S_struct.TestFunctionType, 'dtlz'))
+    plot(I_iter, [S_val.FVr_oa], '.');
+else
+    dis_temp = pdist2(FM_ui(:,:),S_struct.bestmemit);
+    plot(dis_temp,[S_val.FVr_oa]','.');
+end
+
 %     
     
     
@@ -384,7 +398,7 @@ while ((S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes > I_nfeval))
     %end
     
     
-    I_iter = I_iter + 1;
+
     
     
     
@@ -620,16 +634,16 @@ OUTPUT.S_bestva = S_bestva; % each iter best fitness
 OUTPUT.S_bestmem = S_bestmem; % each iter best individual
 OUTPUT.fname = fname;
 
-output(OUTPUT, S_struct);
+Output(OUTPUT, S_struct);
 
 end
 
-function FDC = CalFDC(S_bestmem,S_bestva_FVr_oa,iter,S_struct)
-FDC.Cfb = sum(S_bestva_FVr_oa)/iter;
-FDC.Cd = pdist2( S_bestmem(1:iter,:) ,S_struct.bestmemit);
-FDC.Cdb = sum(FDC.Cd)/iter;
-FDC.Cfd = sum((S_bestva_FVr_oa -  FDC.Cfb) .* (FDC.Cd - FDC.Cdb))/iter;
-FDC.af = std2(S_bestva_FVr_oa);
-FDC.ad = std2(FDC.Cd);
-FDC.r =  FDC.Cfd/FDC.af/FDC.ad;
-end
+% function FDC = CalFDC(S_bestmem,S_bestva_FVr_oa,iter,S_struct)
+% FDC.Cfb = sum(S_bestva_FVr_oa)/iter;
+% FDC.Cd = pdist2( S_bestmem(1:iter,:) ,S_struct.bestmemit);
+% FDC.Cdb = sum(FDC.Cd)/iter;
+% FDC.Cfd = sum((S_bestva_FVr_oa -  FDC.Cfb) .* (FDC.Cd - FDC.Cdb))/iter;
+% FDC.af = std2(S_bestva_FVr_oa);
+% FDC.ad = std2(FDC.Cd);
+% FDC.r =  FDC.Cfd/FDC.af/FDC.ad;
+% end

@@ -6,8 +6,8 @@ p =zeros(1, fsize);
 varf =  var(fitness);
 
 
-% figure;
-% hold on ;
+ figure;
+ hold on ;
 
 tf = [ fitness(2:size(fitness,2)) 0 ];
 Lag = tf - fitness;
@@ -26,6 +26,6 @@ ylabel('Autocorrelation');
 title(S_struct.title);
 
 hold off;
-print(gcf,'-dpng', ['D:\workspace\matlab\FitnessLandscape\img\',S_struct.title, ' Autocorrelation.png']);
+print(gcf,'-dpng', ['L:\workspaces\matlab\FitnessLandscape\img\Autocorrelation\',S_struct.title, ' Autocorrelation.png']);
 
 end

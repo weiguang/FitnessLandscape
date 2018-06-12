@@ -1,4 +1,5 @@
-%
+
+function walk = RandomWalk(dim,domain,steps,step_size)
 % Random walk 
 % eg:
 % dim = 2;
@@ -8,11 +9,9 @@
 % walk = zeros(1,dim);
 % RandomWalk(2,[-100,100],100,1)
 
-function walk = RandomWalk(dim,domain,steps,step_size)
-
 domainSize = domain(2)-domain(1);
 
-% %% shift domain
+%  shift domain
 % shift = 0;
 % if(domain(1) <0 )
 %    shift =  - domain(1);
@@ -40,22 +39,23 @@ while i < steps
     temp = walk(i,:) + randi([0,step_size],1,dim);
     walk(i + 1,:)  = temp - (temp > newDomain(2)) * newDomainSize;
 %     pause(.005);
-    
+   
+
 %% plot fitness;    
 %     fitness(i) = feval(fhd,walk(i,:)',func_num);
 %     plot(fitness);
-
-%% plot individual     
-%     if (dim == 1)
-%     plot(walk);
-%     elseif (dim == 2 )
-%         plot(walk(:,1),walk(:,2));
-%     end
 
 i = i + 1;
 end
 
 walk = walk / bei;
+%% plot individual     
+    if (dim == 1)
+    plot(walk);
+    elseif (dim == 2 )
+        plot(walk(:,1),walk(:,2));
+    end
+    
 
 end
 

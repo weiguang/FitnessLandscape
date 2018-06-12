@@ -71,6 +71,7 @@ function OUTPUT = runTest(func, my_D)
 %********************************************************************
 % Start of optimization
 %********************************************************************
+AnalyzeProblem(S_struct,func);
 
 [FVr_x,S_y,I_nf,OUTPUT] = deopt(func,S_struct);
 a =1;

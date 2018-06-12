@@ -2,12 +2,16 @@ clc;
 clear;
 % addpath(genpath(pwd));
 
-d=[30];
+d=[10];
+totalTime = 1;
+func_list = [1:1];
+func_size = size(func_list,2);
+
 [m n] = size(d);
 FDC = '';
 title = '';
 R = '';
-
+fname = 'CEC2015'
 
 FDC1.Cfb = 0;
 FDC1.Cd = 0;
@@ -17,12 +21,10 @@ FDC1.af = 0;
 FDC1.ad = 0;
 FDC1.r = 0;
 
-
-func_size = 25;
-
-totalTime = 25;
-
 result = zeros(func_size, totalTime);
+
+global H;
+H = zeros(size(func_list,2), 9);
 
 for func_num = 1:func_size
     problem = func_num;
@@ -34,11 +36,11 @@ for func_num = 1:func_size
                 clc;
                  if (CheckFile(func_num,d(i))==0)
                     [FVr_x,S_y,I_nf,OUTPUT] = runTestCEC2005(func_num,d(i));
-%                      FDC = [FDC OUTPUT.FDC];
+                     FDC = [FDC OUTPUT.FDC];
                      title = sprintf("func %d ", func_num);
                      outcome = [outcome S_y.FVr_oa];
                  else
-%                       FDC = [FDC FDC1];
+                      FDC = [FDC FDC1];
                       outcome = [outcome NaN];
                  end                
                  con = 0;
@@ -53,18 +55,8 @@ for func_num = 1:func_size
      
 end
 
-% figure;
-% func_size = size(FDC,2);
-% x=[21:25];
-% bar(x, [FDC.r]);
-% xlabel("测试函数");
-% ylabel("FDC系数");
-% hold on;
-% y  = repelem(0.75,1,func_size+2);
-% plot([20:1:26],y,'--');
-% y  = repelem(0.15,1,func_size+2);
-% plot([20:1:26],y,'--');
-% hold off;
+PlotFDC(func_list, FDC);
+GetEntropy(H, fname,func_list)
 
 %% 检查文件
 % func_num:测试函数编号

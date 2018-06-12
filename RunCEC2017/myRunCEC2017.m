@@ -7,29 +7,47 @@ clear;
 % d=[2,10,30,50,100]; % cec2017
 
 
-d=[50];
+d=[10];
 [m n] = size(d);
 
-funcList = [1:25];
+func_list = [1:1];
 
-alltime = 25;
+alltime = 1;
 
 result = [];
 
-global H;
-H = zeros(size(funcList,2), 9);
+FDC = '';
+title = '';
+R = '';
 
-for func_num = funcList
+fname = 'CEC2017'
+
+
+FDC1.Cfb = 0;
+FDC1.Cd = 0;
+FDC1.Cdb = 0;
+FDC1.Cfd = 0;
+FDC1.af = 0;
+FDC1.ad = 0;
+FDC1.r = 0;
+
+global H;
+H = zeros(size(func_list,2), 9);
+
+for func_num = func_list
     for time = 1:alltime
         for i = 1:n
             con  = 1;
             while(con >0)
                 clc;
                 if (CheckFile(func_num,d(i))==0)
-                    [FVr_x,S_y,I_nf] = runTestCEC2017(func_num,d(i));
+                    [FVr_x,S_y,I_nf,OUTPUT] = runTestCEC2017(func_num,d(i));
+                     FDC = [FDC OUTPUT.FDC];
                     result(func_num, time) = S_y.FVr_oa(1);
                 else
                     result(func_num, time) = 0;
+                    FDC = [FDC FDC1];
+              
                 end
                 %             con = input('请输入‘回车’继续下一维，‘其他键’重跑，‘ctrl+c’ 结束:');
                 con = 0;
@@ -37,6 +55,9 @@ for func_num = funcList
         end
     end
 end
+
+PlotFDC(func_list, FDC);
+GetEntropy(H, fname,func_list)
 
 %% 检查文件
 % func_num:测试函数编号
