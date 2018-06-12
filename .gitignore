@@ -1,6 +1,7 @@
 #Jam Project
 test.mlx
-img/
+img/Autocorrelation/*
+img/RandomWalk/*
 
 #Matlab
 .mexw64
