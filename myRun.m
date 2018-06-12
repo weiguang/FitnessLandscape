@@ -31,17 +31,23 @@ for func = func_list
     
 end
 
-% figure;
-% x=[1:func_size];
-% bar(x,[FDC.r]);
-% xlabel("测试函数");
-% ylabel("FDC系数");
-% hold on;
-% y  = repelem(0.75,1,func_size+2);
-% plot([0:1:(func_size+1)],y,'--');
-% y  = repelem(0.15,1,func_size+2);
-% plot([0:1:(func_size+1)],y,'--');
-% hold off;
+PlotFDC(func_list, FDC);
+
+
+function PlotFDC(func_list, FDC) 
+func_size = size(func_list,2);
+figure;
+x=[1:func_size];
+bar(x,[FDC.r]);
+xlabel("测试函数");
+ylabel("FDC系数");
+hold on;
+y  = repelem(0.75,1,func_size+2);
+plot([0:1:(func_size+1)],y,'--');
+y  = repelem(0.15,1,func_size+2);
+plot([0:1:(func_size+1)],y,'--');
+hold off;
+end
 
 function fun_all()
 func_list = {'Ackley','Beale','GoldsteinPrice','Griewank','Quadric','Quartic','Rastrigin','Rosenbrock','Salomon','Schwefel222','Schwefel226','Spherical'}
