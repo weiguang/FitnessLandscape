@@ -2,14 +2,16 @@ clc;
 clear;
 % addpath(genpath(pwd));
 
-d=[30];
+d=[10];
+totalTime = 1;
+func_list = [1:1];
+func_size = size(func_list,2);
+
 [m n] = size(d);
 FDC = '';
 title = '';
 R = '';
-
-fname = 'CEC2017'
-
+fname = 'CEC2015'
 
 FDC1.Cfb = 0;
 FDC1.Cd = 0;
@@ -19,13 +21,10 @@ FDC1.af = 0;
 FDC1.ad = 0;
 FDC1.r = 0;
 
-
-func_list = [1:25];
-func_size = size(func_list,2);
-
-totalTime = 25;
-
 result = zeros(func_size, totalTime);
+
+global H;
+H = zeros(size(func_list,2), 9);
 
 for func_num = 1:func_size
     problem = func_num;
