@@ -1,4 +1,5 @@
-%
+
+function walk = RandomWalk(dim,domain,steps,step_size)
 % Random walk 
 % eg:
 % dim = 2;
@@ -8,14 +9,9 @@
 % walk = zeros(1,dim);
 % RandomWalk(2,[-100,100],100,1)
 
-
-
-function walk = RandomWalk(dim,domain,steps,step_size)
-
-
 domainSize = domain(2)-domain(1);
 
-% %% shift domain
+%  shift domain
 % shift = 0;
 % if(domain(1) <0 )
 %    shift =  - domain(1);
