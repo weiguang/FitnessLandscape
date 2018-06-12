@@ -16,7 +16,7 @@ function [walk, S_MSE] = GetRandomWalkFitness(S_struct, fname,varargin)
     xlabel('Step');
     ylabel('Fitness'); 
     title(S_struct.title);
-    path = 'L:\workspaces\matlab\FitnessLandscape\img\RandomWalk\';
+    path = '.\img\RandomWalk\';
     print(gcf,'-dpng', [path,S_struct.title, ' RandomWalk.png']);  
 end
 

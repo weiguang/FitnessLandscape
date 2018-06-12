@@ -26,6 +26,6 @@ ylabel('Autocorrelation');
 title(S_struct.title);
 
 hold off;
-print(gcf,'-dpng', ['L:\workspaces\matlab\FitnessLandscape\img\Autocorrelation\',S_struct.title, ' Autocorrelation.png']);
+print(gcf,'-dpng', ['.\img\Autocorrelation\',S_struct.title, ' Autocorrelation.png']);
 
 end
