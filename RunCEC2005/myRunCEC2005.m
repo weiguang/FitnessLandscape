@@ -18,7 +18,8 @@ FDC1.ad = 0;
 FDC1.r = 0;
 
 
-func_size = 25;
+func_list = [1:25];
+func_size = size(func_list,2);
 
 totalTime = 25;
 
@@ -53,18 +54,7 @@ for func_num = 1:func_size
      
 end
 
-% figure;
-% func_size = size(FDC,2);
-% x=[21:25];
-% bar(x, [FDC.r]);
-% xlabel("测试函数");
-% ylabel("FDC系数");
-% hold on;
-% y  = repelem(0.75,1,func_size+2);
-% plot([20:1:26],y,'--');
-% y  = repelem(0.15,1,func_size+2);
-% plot([20:1:26],y,'--');
-% hold off;
+PlotFDC(func_list, FDC);
 
 %% 检查文件
 % func_num:测试函数编号
