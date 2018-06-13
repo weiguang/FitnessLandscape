@@ -56,7 +56,7 @@ for func_num = func_list
     end
 end
 
-PlotFDC(func_list, FDC);
+PlotFDC(func_list, fname, FDC);
 GetEntropy(H, fname,func_list)
 
 %% ¼ì²éÎÄ¼þ

@@ -1,5 +1,5 @@
-%  mex cec17_func.cpp -DWINDOWS
-function [fitness] = testCPP()
+mex cec17_func.cpp -DWINDOWS
+function [fitness] = testCEC2017()
 func_num = 3;
 D = 2;
 addpath(genpath(pwd));

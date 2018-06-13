@@ -55,8 +55,8 @@ for func_num = 1:func_size
      
 end
 
-PlotFDC(func_list, FDC);
-GetEntropy(H, fname,func_list)
+PlotFDC(func_list, fname, FDC);
+GetEntropy(H, fname,func_list);
 
 %% 检查文件
 % func_num:测试函数编号
