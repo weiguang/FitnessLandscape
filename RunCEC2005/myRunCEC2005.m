@@ -2,9 +2,15 @@ clc;
 clear;
 % addpath(genpath(pwd));
 
+% 维度
 d=[10];
+%运行次数
 totalTime = 1;
-func_list = [1:3];%func_list = [1:25];
+% test 测试
+func_list = [1:3];
+% all functions 所有函数 
+%func_list = [1:25];
+
 func_size = size(func_list,2);
 
 [m n] = size(d);

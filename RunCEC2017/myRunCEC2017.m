@@ -7,13 +7,16 @@ clear;
 % d=[2,10,30,50,100]; % cec2017
 
 
+% 维度
 d=[10];
 [m n] = size(d);
-
+%运行次数
+totalTime = 1;
+% test 测试
 func_list = [1:1];
+% all functions 所有函数 
 %func_list = [1:25];
 
-alltime = 1;
 
 result = [];
 
@@ -36,7 +39,7 @@ global H;
 H = zeros(size(func_list,2), 9);
 
 for func_num = func_list
-    for time = 1:alltime
+    for time = 1:totalTime
         for i = 1:n
             con  = 1;
             while(con >0)
