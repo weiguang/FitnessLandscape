@@ -1,5 +1,10 @@
 
 function walk = RandomWalk(dim,domain,steps,step_size)
+%  Ref.
+%  Malan K M, Engelbrecht A P. Quantifying ruggedness of continuous landscapes using entropy[C]
+% //Evolutionary Computation, 2009. CEC'09. IEEE Congress on. IEEE, 2009: 1440-1447.
+%
+
 % Random walk 
 % eg:
 % dim = 2;

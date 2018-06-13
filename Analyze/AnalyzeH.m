@@ -1,6 +1,12 @@
 function H = AnalyzeH(fitness)
 %UNTITLED2 此处显示有关此函数的摘要
-%   此处显示详细说明
+%   %  Ref.
+%  Malan K M, Engelbrecht A P. Quantifying ruggedness of continuous landscapes using entropy[C]
+% //Evolutionary Computation, 2009. CEC'09. IEEE Congress on. IEEE, 2009: 1440-1447.
+%
+% fitness 用randomwalk 得到的游走集合得到的适应值
+
+
 %  func_num = 25;
 eps = 2;
 % dim = 2;

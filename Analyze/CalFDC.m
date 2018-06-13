@@ -1,4 +1,8 @@
 function FDC = CalFDC(S_bestmem,S_bestva_FVr_oa,iter,S_struct)
+% Ref.
+%Yang S, Li K, Li W, et al. Dynamic Fitness Landscape Analysis on Differential Evolution Algorithm[C]
+%//Bio-Inspired Computing-Theories and Applications. Springer, Singapore, 2016: 179-184
+%
 %CalFDC 计算FDC
 %   S_bestmem 算法计算得到的最优个体
 %   S_bestva_FVr_oa 算法计算得到的最优值
