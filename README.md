@@ -36,8 +36,8 @@ NEW: Add CEC2017 beanchmark
 
 note:you need to cheak CEC function can run.In dir 'CEC****',you can run `testCEC****.m` to test. "****" is year.
   
----
-### NEW: This project can analayze MOP 
+
+ ### NEW: This project can analyze MOP use fitness landscape
  
 4.ZDT
 * run `AddWorkPath.m` to add directory to search path.
@@ -53,5 +53,5 @@ note:you need to cheak CEC function can run.In dir 'CEC****',you can run `testCE
 * If you want to run CEC fucntion, you need to install C++ compiler(VS or mingw)
 
 
-## Rederence
-You can see dir ` Rederence`. 
+## Reference
+You can see dir ` Reference`. 
