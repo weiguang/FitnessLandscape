@@ -1,10 +1,12 @@
 clc;
 clear;
 %AddWorkPath;
+%Î¬¶È
 % d=[5,15,30];
 d=[5];
 % d=[2];
 n = size(d,2);
+% all function :func_list + func_list2
 % func_list = {'Ackley','Griewank','Quadric','Quartic','Rastrigin','Rosenbrock','Salomon','Schwefel222','Schwefel226','Spherical'};
 % func_list = {'Griewank','Quadric','Quartic','Rastrigin','Rosenbrock','Salomon','Schwefel222','Schwefel226'};
  func_list = {'Rosenbrock'};
