@@ -4,7 +4,7 @@ clear;
 
 d=[10];
 totalTime = 1;
-func_list = [1:1];
+func_list = [1:3];%func_list = [1:25];
 func_size = size(func_list,2);
 
 [m n] = size(d);

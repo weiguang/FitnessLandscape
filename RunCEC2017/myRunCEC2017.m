@@ -11,6 +11,7 @@ d=[10];
 [m n] = size(d);
 
 func_list = [1:1];
+%func_list = [1:25];
 
 alltime = 1;
 
