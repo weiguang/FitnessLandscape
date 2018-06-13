@@ -2,6 +2,10 @@
 test.mlx
 img/Autocorrelation/*
 img/RandomWalk/*
+img/Entropy/*
+img/FDC/*
+img/DistancePlot/*
+
 
 #Matlab
 .mexw64
