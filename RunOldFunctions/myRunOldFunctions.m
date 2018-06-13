@@ -40,6 +40,7 @@ for func = func_list
 end
 
 fname = 'classic function';
+% ·ÖÎöº¯Êý FDC ºÍ Entropy
 PlotFDC(func_list, fname ,FDC);
 GetEntropy(H, fname,func_list);
 
