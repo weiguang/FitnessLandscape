@@ -8,9 +8,11 @@ d=[5];
 n = size(d,2);
 % all function :func_list + func_list2
 % func_list = {'Ackley','Griewank','Quadric','Quartic','Rastrigin','Rosenbrock','Salomon','Schwefel222','Schwefel226','Spherical'};
-% func_list = {'Griewank','Quadric','Quartic','Rastrigin','Rosenbrock','Salomon','Schwefel222','Schwefel226'};
+% test ≤‚ ‘ 
+% func_list = {         'Griewank','Quadric','Quartic','Rastrigin','Rosenbrock','Salomon','Schwefel222','Schwefel226'};
  func_list = {'Rosenbrock'};
 func_list2 = {'Beale','GoldsteinPrice'}; %÷ªƒ‹2Œ¨
+
 %  FDC = zeros(1,size(func_list,2));
 func_size = size(func_list,2);
 FDC = '';
