@@ -223,7 +223,7 @@ FM_meanv = ones(I_NP,I_D);
 
 I_iter = 1;
 
-%% jam add 20180202  flag:dictance plot
+%% jam add 20180202  flag:distance plot
 figure;
 if(strcmp(S_struct.TestFunctionType, 'ZDT') || strcmp(S_struct.TestFunctionType, 'dtlz'))
     plot(I_iter, S_bestva(1).FVr_oa,'.');
@@ -359,7 +359,7 @@ while ((S_bestval.FVr_oa(1) > F_VTR) && (S_struct.I_Fes > I_nfeval))
     
   I_iter =  I_iter + 1;   
     
-    %%Jam add 20180202  flag:dictance plot
+    %%Jam add 20180202  flag:distance plot
 if(strcmp(S_struct.TestFunctionType, 'ZDT') || strcmp(S_struct.TestFunctionType, 'dtlz'))
     plot(I_iter, [S_val.FVr_oa], '.');
 else
@@ -456,6 +456,9 @@ end
     
 end %---end while ((I_iter < I_itermax) ...
 
+   %%Jam add 20180613  flag:distance plot
+   % save plot 
+    print(gcf,'-dpng', ['.\img\DistancePlot\',S_struct.title, ' DistancePlot.png']);
 
 %  S_bestmem(I_iter,:) = FVr_bestmemit; % best parameter vector
 %  S_bestva(I_iter) = S_bestval;      %best value
