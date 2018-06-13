@@ -1,4 +1,4 @@
-function OUTPUT = runTest(func, my_D)
+function OUTPUT = runTestOldFunctions(func, my_D)
 
 % I_NP            number of population members
 		I_NP = 150;  %pretty high number - needed for demo purposes only

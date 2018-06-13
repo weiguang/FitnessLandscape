@@ -13,13 +13,17 @@ func_list2 = {'Beale','GoldsteinPrice'}; %Ö»ÄÜ2Î¬
 func_size = size(func_list,2);
 FDC = '';
 title = '';
+
+global H;
+H = zeros(size(func_list,2), 9);
+
 for func = func_list
     j = 1;
     for i = 1:n
         con  = 1;
         while(con >0)
             clc;
-            [OUTPUT] = runTest(func{1},d(i));
+            [OUTPUT] = runTestOldFunctions(func{1},d(i));
             FDC = [FDC OUTPUT.FDC];
             title = [title func{1}];
             j = j+1;
@@ -31,7 +35,9 @@ for func = func_list
     
 end
 
-PlotFDC(func_list, FDC);
+fname = 'classic function';
+PlotFDC(func_list, fname ,FDC);
+GetEntropy(H, fname,func_list);
 
 
 function fun_all()
